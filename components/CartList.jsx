@@ -23,15 +23,15 @@ const CartList = () => {
             <b>Design and Relax</b>
           </div>
           <div className="flex">
-
-          <div className="qty">
-            Quantity: <b>1</b>
-          </div>
-          <div className="amount">
-            Subtotal: <b>$599.00</b>
-          </div>
+            <div className="qty">
+              Quantity: <b>1</b>
+            </div>
+            <div className="amount">
+              Subtotal: <b>$599.00</b>
+            </div>
           </div>
         </div>
+        <FaTimesCircle className="close-btn" />
       </div>
     </Container>
   );
@@ -90,6 +90,7 @@ const Container = styled.div`
   .close-btn {
     font-size: 1.1rem;
     cursor: pointer;
+    color: red;
 
     :hover {
       opacity: 0.8;
