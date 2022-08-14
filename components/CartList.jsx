@@ -90,9 +90,9 @@ const Container = styled.div`
   .close-btn {
     font-size: 1.1rem;
     cursor: pointer;
-    color: red;
 
     :hover {
+      color: red;
       opacity: 0.8;
     }
   }
