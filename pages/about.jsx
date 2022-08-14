@@ -3,7 +3,7 @@ import Layout from "../layout";
 import styled from "styled-components";
 import Link from "next/link";
 import { AppRoutes } from "../utils/constants";
-// import ProductCard from "../components/ProductCard";
+
 
 export default function About() {
   return (

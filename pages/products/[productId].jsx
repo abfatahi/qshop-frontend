@@ -65,10 +65,6 @@ export default function SingleProduct() {
               <h1>{data?.title}</h1>
               <div className="amount">${data?.price?.toLocaleString()}</div>
               <p>{data?.description}</p>
-              <div className="flex">
-                <InputField inputType="number" placeholder={"Qty"} />
-                <Button text="Add to Cart" primary />
-              </div>
               <div className="others">
                 <b>SKU: </b>
                 {data?.title}
@@ -77,6 +73,11 @@ export default function SingleProduct() {
               <div className="others">
                 <b>Category: </b>
                 {data?.category?.name}
+              </div>
+              <br />
+              <div className="flex">
+                <InputField inputType="number" placeholder={"Qty"} />
+                <Button text="Add to Cart" primary />
               </div>
             </div>
           </div>
@@ -97,13 +98,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
-  hr {
-    margin: 0;
-    padding: 0;
-    border: none;
-    border-bottom: 1px solid #0000004a;
-  }
 
   .second_row {
     h3 {
@@ -136,11 +130,6 @@ const Container = styled.div`
     .others {
       font-size: 1.2em;
       font-weight: 200;
-    }
-
-    .flex {
-      display: flex;
-      gap: 1rem;
     }
 
     .amount {

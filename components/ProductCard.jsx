@@ -1,11 +1,18 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
+import Link from "next/link";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import styled from "styled-components";
+import { useRouter } from "next/router";
 
 const ProductCard = (props) => {
+  const router = useRouter();
+  const handleClick = (e, id) => {
+    e.preventDefault();
+    router.push(`/products/${id}`);
+  };
   return (
-    <Container key={props?.id}>
+    <Container onClick={(e) => handleClick(e, props?.id)} key={props?.id}>
       <ImageLoader src={props?.images[0]} alt="" effect="blur" />
       <h3>{props?.title}</h3>
       <h3>${props?.price?.toLocaleString()}</h3>

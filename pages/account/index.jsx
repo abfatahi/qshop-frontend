@@ -1,6 +1,6 @@
 import Layout from "../../layout";
 // import styled from "styled-components";
-// import ProductCard from "../components/ProductCard";
+
 
 export default function Account() {
   return (

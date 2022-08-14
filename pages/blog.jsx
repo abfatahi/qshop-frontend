@@ -4,7 +4,7 @@ import styled from "styled-components";
 import Layout from "../layout";
 import { AppRoutes } from "../utils/constants";
 // import styled from "styled-components";
-// import ProductCard from "../components/ProductCard";
+
 
 export default function About() {
   return (
