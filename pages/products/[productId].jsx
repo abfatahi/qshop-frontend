@@ -6,8 +6,11 @@ import { useRouter } from "next/router";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Button, InputField } from "../../reusables";
 import Skeleton from "react-loading-skeleton";
+import { useDispatch } from "react-redux";
+import { handleAddToCart } from "../../redux/reducers/cart";
 
 export default function SingleProduct() {
+  const dispatch = useDispatch();
   const router = useRouter();
   const { productId } = router.query;
   const useFetch = () => {
@@ -23,7 +26,26 @@ export default function SingleProduct() {
     };
   };
   const { data, isLoading, isError } = useFetch();
-  const [quantity, setQuantity] = React.useState(1);
+  const [quantity, setQuantity] = React.useState(10);
+  const [addToCartLoading, setAddToCartLoading] = React.useState(false);
+
+  const addToCart = async () => {
+    setAddToCartLoading(true);
+    const { id, title, price, images } = data;
+    await new Promise((res) => setTimeout(res, 1000));
+    dispatch(
+      handleAddToCart({
+        id,
+        title,
+        price,
+        image: images[0],
+        quantity,
+        subTotal: parseFloat(price) * parseFloat(quantity),
+      })
+    );
+    setAddToCartLoading(true);
+  };
+
   return (
     <Layout
       title="Product Details"
@@ -81,7 +103,7 @@ export default function SingleProduct() {
               <br />
               <div className="flex">
                 <InputField inputType="number" placeholder={"Qty"} />
-                <Button text="Add to Cart" primary />
+                <Button text="Add to Cart" primary onClick={addToCart} />
               </div>
             </div>
           </div>
