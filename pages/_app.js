@@ -7,13 +7,17 @@ import "react-loading-skeleton/dist/skeleton.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { ErrorBoundary } from "react-error-boundary";
 import ErrorHandler from "../components/ErrorHandler";
+import { Provider } from "react-redux";
+import store from "../redux/configureStore";
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <ErrorBoundary FallbackComponent={<ErrorHandler />}>
-        <Component {...pageProps} />
-      </ErrorBoundary>
+      <Provider store={store}>
+        <ErrorBoundary FallbackComponent={<ErrorHandler />}>
+          <Component {...pageProps} />
+        </ErrorBoundary>
+      </Provider>
       <ToastContainer
         position="top-right"
         autoClose={5000}

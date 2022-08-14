@@ -5,17 +5,22 @@ import Content from "./Content";
 import Footer from "./Footer";
 import Sidenav from "./Sidenav";
 import styled from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
+import { sidebarSelector, toggleSidebar } from "../redux/reducers/sidebar";
 
 const Layout = (props) => {
-  const active = false;
+  const dispatch = useDispatch();
+  const { sidebarActive } = useSelector(sidebarSelector);
   return (
     <Container>
       <Head />
-      {active && (
+      {sidebarActive && (
         <Sidenav
+          showSidebar={sidebarActive}
+          handleSidebarClose={() => dispatch(toggleSidebar())}
         />
       )}
-      <Navbar />
+      <Navbar toggleSideBar={() => dispatch(toggleSidebar())} />
       <Content content={props.content} />
       <Footer />
     </Container>

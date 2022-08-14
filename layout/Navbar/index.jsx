@@ -9,7 +9,7 @@ import { Searchbar } from "../../reusables";
 import { AppRoutes } from "../../utils/constants";
 import Container from "./styles";
 
-const Navbar = () => {
+const Navbar = ({toggleSideBar}) => {
   const shopMenu = (
     <Menu
       items={[
@@ -82,7 +82,7 @@ const Navbar = () => {
         <Link href={AppRoutes.contact}>Contact</Link>
       </div>
       <Searchbar className="searchbar" />
-      <FaBars className="hamburger" />
+      <FaBars className="hamburger" onClick={toggleSideBar}/>
     </Container>
     </>
   );

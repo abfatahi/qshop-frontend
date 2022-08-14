@@ -73,7 +73,7 @@ export default styled.div`
 
   .hamburger {
     position: absolute;
-    // top: 16px;
+    top: 14px;
     right: 24px;
     font-size: 1.3rem;
     cursor: pointer;
