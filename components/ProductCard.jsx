@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
-import Link from "next/link";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import styled from "styled-components";
 import { useRouter } from "next/router";
@@ -29,26 +28,21 @@ const Container = styled.div`
   gap: 0.5rem;
   cursor: pointer;
 
-  img {
-    width: 100%;
-    height: 300px;
-    transition: all 0.3s ease-in-out;
-
-    :hover {
-      opacity: 0.9;
-    }
-  }
-
   h3 {
     font-weight: 200;
     font-size: 1.3rem;
     text-transform: uppercase;
   }
+
+  :hover {
+    opacity: 0.8;
+  }
 `;
 
 const ImageLoader = styled(LazyLoadImage)`
-  width: 100%;
-  height: 300px; !important;
-  object-fit: fill !important;
+  width: 100% !important;
+  height: 300px !important;
+  object-fit: contain !important;
   transition: all 0.3s ease-in-out;
+
 `;
