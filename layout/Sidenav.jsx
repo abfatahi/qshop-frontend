@@ -1,29 +1,65 @@
 import React from "react";
 import styled from "styled-components";
-import { FaTimes } from "react-icons/fa";
+import { FaChevronDown, FaChevronUp, FaTimes } from "react-icons/fa";
 import { AppRoutes } from "../utils/constants";
 
 const Sidebar = ({ showSidebar, handleSidebarClose }) => {
+  const [show, setShow] = React.useState(false);
   return (
     <Container showSidebar={showSidebar}>
       <div className="nav_wrapper">
         <CancelButton onClick={handleSidebarClose} />
-        {[
-          { text: "Home", link: AppRoutes.home },
-          { text: "About", link: AppRoutes.about },
-          { text: "Shop", link: AppRoutes.home },
-          { text: "My Account", link: AppRoutes.account },
-          { text: "Cart", link: AppRoutes.cart },
-          { text: "Checkout", link: AppRoutes.checkout },
-          { text: "Blog", link: AppRoutes.about },
-          { text: "Contact", link: AppRoutes.contact },
-        ].map((item, index) => {
-          return (
-            <NavItem key={index} href={item.link}>
-              {item.text}
-            </NavItem>
-          );
-        })}
+        <NavItem onClick={handleSidebarClose} href={AppRoutes.home}>
+          Home
+        </NavItem>
+        <NavItem onClick={handleSidebarClose} href={AppRoutes.about}>
+          About
+        </NavItem>
+        <div className="dropdown_nav">
+          Shop
+          {show ? (
+            <FaChevronUp onClick={() => setShow(!show)} />
+          ) : (
+            <FaChevronDown onClick={() => setShow(!show)} />
+          )}
+        </div>
+        {show && (
+          <>
+            {[
+              { text: "All Products", link: AppRoutes.products },
+              { text: "Clothes", link: AppRoutes.productClothes },
+              { text: "Electronics", link: AppRoutes.productElectronics },
+              { text: "Furniture", link: AppRoutes.productFurniture },
+              { text: "Shoes", link: AppRoutes.productShoes },
+              { text: "Others", link: AppRoutes.productOthers },
+            ].map((nav, index) => {
+              return (
+                <NavItem
+                  key={index}
+                  onClick={handleSidebarClose}
+                  href={nav?.link}
+                >
+                  &nbsp;&nbsp;&nbsp;{nav?.text}
+                </NavItem>
+              );
+            })}
+          </>
+        )}
+        <NavItem onClick={handleSidebarClose} href={AppRoutes.account}>
+          My Account
+        </NavItem>
+        <NavItem onClick={handleSidebarClose} href={AppRoutes.checkout}>
+          Checkout
+        </NavItem>
+        <NavItem onClick={handleSidebarClose} href={AppRoutes.cart}>
+          Cart
+        </NavItem>
+        <NavItem onClick={handleSidebarClose} href={AppRoutes.blog}>
+          Blog
+        </NavItem>
+        <NavItem onClick={handleSidebarClose} href={AppRoutes.contact}>
+          Contact
+        </NavItem>
       </div>
       <div className="overlay" onClick={handleSidebarClose} />
     </Container>
@@ -55,6 +91,21 @@ const Container = styled.div`
     height: 100vh;
   }
 
+  .dropdown_nav {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 16px;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    :hover {
+      color: #0ae73f;
+    }
+  }
+
   .overlay {
     position: absolute;
     left: 0;
@@ -74,11 +125,10 @@ const Container = styled.div`
 `;
 
 const NavItem = styled.a`
-  font-family: Inter;
   font-style: normal;
-  font-weight: 600;
-  font-size: 18px;
-  line-height: 32px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 16px;
   color: #ffffff;
 
   :hover {

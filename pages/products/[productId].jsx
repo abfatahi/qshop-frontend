@@ -61,7 +61,7 @@ export default function SingleProduct() {
           {isError && <h1>SOMETHING WENT WRONG</h1>}
           <div className="first_row">
             <ImageLoader
-              src={"/assets/productImage.jpeg"}
+              src={"/assets/imagePlaceholder.png"}
               effect="blur"
               alt="Product"
             />
