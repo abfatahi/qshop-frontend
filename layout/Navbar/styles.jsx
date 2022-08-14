@@ -17,6 +17,7 @@ export default styled.div`
   img {
     width: 200px;
     height: 80%;
+    cursor: pointer;
   }
 
   .nav_menu {
