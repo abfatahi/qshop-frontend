@@ -1,13 +1,11 @@
 import React from "react";
 import Layout from "../../layout";
 import styled from "styled-components";
-import ProductCard from "../../components/ProductCard";
-import ProductCardSkeleton from "../../components/ProductCardSkeleton";
-import { Pagination } from "antd";
 import useSWR from "swr";
 import { useRouter } from "next/router";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Button, InputField } from "../../reusables";
+import Skeleton from "react-loading-skeleton";
 
 export default function SingleProduct() {
   const router = useRouter();
@@ -25,50 +23,60 @@ export default function SingleProduct() {
     };
   };
   const { data, isLoading, isError } = useFetch();
-  console.log(data);
   const [quantity, setQuantity] = React.useState(1);
   return (
     <Layout
       title="Product Details"
       content={
         <Container>
-          {/* {isLoading &&
-            Array.from({ length: 6 }, (index) => {
-              return <ProductCardSkeleton key={index} />;
-            })}
-          {isError && <h1>SOMETHING WENT WRONG</h1>} */}
+          {isLoading && (
+            <>
+              <div className="first_row">
+                <Skeleton width={"100%"} height="500px" />
+                <div className="details">
+                  <Skeleton width={"100%"} height="50px" />
+                  <Skeleton width={"100%"} height="40px" />
+                  <Skeleton width={"100%"} height="120px" />
+                  <div className="flex">
+                    <Skeleton width={"100px"} height="30px" />
+                    <Skeleton width={"100px"} height="30px" />
+                  </div>
+                  <div className="others">
+                    <Skeleton width={"400px"} height="30px" />
+                  </div>
+                  <div className="others">
+                    <Skeleton width={"400px"} height="30px" />
+                  </div>
+                </div>
+              </div>
+              <div className="second_row">
+                <Skeleton width={"100%"} height="30px" />
+                <hr />
+                <br />
+                <Skeleton width={"100%"} height="30px" />
+                <Skeleton width={"100%"} height="50px" />
+              </div>
+            </>
+          )}
+          {isError && <h1>SOMETHING WENT WRONG</h1>}
           <div className="first_row">
-            <ImageLoader
-              src="/assets/productImage.jpeg"
-              effect="blur"
-              alt="Product"
-            />
+            <ImageLoader src={data?.images[0]} effect="blur" alt="Product" />
             <div className="details">
-              <h1>Blaze Shoes</h1>
-              <div className="amount">$500.55</div>
-              <p>
-                Find work that truly matters to you and your life will change.
-                Forget about your traditional recruitment and searching for job.
-                Do what you love. You need to start now, because your dream will
-                follow your passion for art and design. We are small group of
-                passionate designers and architects…Find work that truly matters
-                to you and your life will change. Forget about your traditional
-                recruitment and searching for job. Do what you love. You need to
-                start now, because your dream will follow your passion for art
-                and design. We are small group of passionate designers and
-                architects
-              </p>
+              <h1>{data?.title}</h1>
+              <div className="amount">${data?.price?.toLocaleString()}</div>
+              <p>{data?.description}</p>
               <div className="flex">
                 <InputField inputType="number" placeholder={"Qty"} />
                 <Button text="Add to Cart" primary />
               </div>
               <div className="others">
                 <b>SKU: </b>
-                RElax2736798
+                {data?.title}
+                {data?.id}
               </div>
               <div className="others">
                 <b>Category: </b>
-                Accessories, All Product, New Arrivals
+                {data?.category?.name}
               </div>
             </div>
           </div>
@@ -77,18 +85,7 @@ export default function SingleProduct() {
             <hr />
             <br />
             <h2>Description</h2>
-            <p>
-              {" "}
-              Find work that truly matters to you and your life will change.
-              Forget about your traditional recruitment and searching for job.
-              Do what you love. You need to start now, because your dream will
-              follow your passion for art and design. We are small group of
-              passionate designers and architects…Find work that truly matters
-              to you and your life will change. Forget about your traditional
-              recruitment and searching for job. Do what you love. You need to
-              start now, because your dream will follow your passion for art and
-              design. We are small group of passionate designers and architects
-            </p>
+            <p>{data?.description}</p>
           </div>
         </Container>
       }
