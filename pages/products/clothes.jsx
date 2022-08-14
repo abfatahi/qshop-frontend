@@ -28,7 +28,7 @@ export default function Clothes() {
               })}
             {data &&
               data
-                ?.slice((all - 1) * 9, (all - 1) * 9 + 9)
+                ?.slice((all - 1) * 12, (all - 1) * 12 + 12)
                 .map((product, index) => {
                   return <ProductCard key={index} {...product} />;
                 })}
@@ -38,7 +38,7 @@ export default function Clothes() {
             <Pagination
               className="pagination_style"
               total={data?.length}
-              pageSize={9}
+              pageSize={12}
               current={all}
               showSizeChanger={false}
               onChange={(all) => {

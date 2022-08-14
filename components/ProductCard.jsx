@@ -29,8 +29,9 @@ const Container = styled.div`
   cursor: pointer;
 
   h3 {
+    text-align: center;
     font-weight: 200;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     text-transform: uppercase;
   }
 
@@ -42,7 +43,6 @@ const Container = styled.div`
 const ImageLoader = styled(LazyLoadImage)`
   width: 100% !important;
   height: 300px !important;
-  object-fit: contain !important;
+  object-fit: fill !important;
   transition: all 0.3s ease-in-out;
-
 `;

@@ -4,6 +4,7 @@ import { Dropdown, Menu, Space } from "antd";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { FaBars } from "react-icons/fa";
 import { Searchbar } from "../../reusables";
 import { AppRoutes } from "../../utils/constants";
 import Container from "./styles";
@@ -58,6 +59,7 @@ const Navbar = () => {
     />
   );
   return (
+    <>
     <Container>
       <Link href={AppRoutes.home}>
         <img src="/logo.png" alt="logo" />
@@ -79,8 +81,10 @@ const Navbar = () => {
         <Link href={AppRoutes.blog}>Blog</Link>
         <Link href={AppRoutes.contact}>Contact</Link>
       </div>
-      <Searchbar />
+      <Searchbar className="searchbar" />
+      <FaBars className="hamburger" />
     </Container>
+    </>
   );
 };
 

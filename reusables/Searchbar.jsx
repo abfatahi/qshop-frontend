@@ -1,13 +1,13 @@
-import React from 'react';
-import { BiSearchAlt } from 'react-icons/bi';
-import styled from 'styled-components';
+import React from "react";
+import { BiSearchAlt } from "react-icons/bi";
+import styled from "styled-components";
 // import { AshSearchIcon } from '../assets/icons';
 
-const Searchbar = ({ onTextChange }) => (
-  <SearchBar>
-    <form action=''>
-      <BiSearchAlt className='icon' />
-      <input type='text' placeholder='Search' onChange={onTextChange} />
+const Searchbar = ({ onTextChange, className }) => (
+  <SearchBar className={className}>
+    <form action="">
+      <BiSearchAlt className="icon" />
+      <input type="text" placeholder="Search" onChange={onTextChange} />
     </form>
   </SearchBar>
 );
