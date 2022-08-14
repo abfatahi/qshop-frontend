@@ -25,7 +25,7 @@ export default function Home() {
               })}
             {data &&
               data
-                ?.slice((all - 1) * 9, (all - 1) * 9 + 9)
+                ?.slice((all - 1) * 12, (all - 1) * 12 + 12)
                 .map((product, index) => {
                   return <ProductCard key={index} {...product} />;
                 })}
@@ -35,7 +35,7 @@ export default function Home() {
             <Pagination
               className="pagination_style"
               total={data?.length}
-              pageSize={9}
+              pageSize={12}
               current={all}
               showSizeChanger={false}
               onChange={(all) => {
@@ -64,6 +64,14 @@ const useFetch = () => {
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 425px) {
+    grid-template-columns: 1fr;
+  }
 `;
