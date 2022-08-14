@@ -18,11 +18,11 @@ export default function Electronics() {
           {data && <p>Showing all {data?.length} results</p>}
           <Container>
             {isLoading &&
-              Array.from({ length: 6 }, (index) => {
+              Array.from({ length: 8 }, (index) => {
                 return <ProductCardSkeleton key={index} />;
               })}
             {isError &&
-              Array.from({ length: 6 }, (index) => {
+              Array.from({ length: 8 }, (index) => {
                 return <ProductCardSkeleton key={index} />;
               })}
             {data &&
@@ -66,6 +66,14 @@ const useFetch = () => {
 
 const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   gap: 2rem;
+
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media screen and (max-width: 425px) {
+    grid-template-columns: 1fr;
+  }
 `;

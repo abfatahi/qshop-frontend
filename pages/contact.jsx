@@ -66,6 +66,11 @@ const Container = styled.div`
   grid-template-columns: 4fr 1fr;
   gap: 4rem;
 
+  @media screen and (max-width: 425px) {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
   .left_frame {
     display: flex;
     flex-direction: column;
@@ -91,6 +96,7 @@ const Container = styled.div`
 
     input,
     textarea {
+      font-weight:300;
       font-size: 1.02rem;
       width: 60%;
       border-radius: 3px;
@@ -100,6 +106,11 @@ const Container = styled.div`
 
       :focus {
         border: 1px solid lightBlue;
+      }
+
+      @media screen and (max-width: 425px) {
+        width: 100%;
+        font-size: 1rem;
       }
     }
 

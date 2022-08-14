@@ -83,6 +83,11 @@ const Container = styled.div`
   grid-template-columns: 4fr 1fr;
   gap: 3rem;
 
+  @media screen and (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap:2rem;
+  }
+
   .table_header {
     display: grid;
     grid-template-columns: 0.5fr 3fr 1fr 1fr 1fr 1fr 0.5fr;
@@ -115,6 +120,10 @@ const Container = styled.div`
       font-size: 1.7em;
       font-weight: bold;
       margin-bottom: 1rem;
+
+      @media screen and (max-width: 768px) {
+        font-size: 1.2em;
+      }
     }
 
     .subtotal {
@@ -124,11 +133,19 @@ const Container = styled.div`
       font-size: 1.1rem;
       border: 1px solid #bdbdbd;
       border-radius: 3px 3px 0 0;
+
+      @media screen and (max-width: 768px) {
+        font-size: 1em;
+      }
     }
 
     h4 {
       font-weight: 600;
       font-size: 1.1rem;
+
+      @media screen and (max-width: 768px) {
+        font-size: 1em;
+      }
     }
 
     h4,
@@ -147,6 +164,10 @@ const Container = styled.div`
       border-left: 1px solid #bdbdbd;
       border-right: 1px solid #bdbdbd;
       border-radius: 0 0 3px 3px;
+
+       @media screen and (max-width: 768px) {
+        font-size: 1em;
+      }
     }
   }
 
