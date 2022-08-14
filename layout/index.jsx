@@ -25,6 +25,6 @@ const Layout = (props) => {
 export default Layout;
 
 const Container = styled.div`
-  // position: relative;
+  position: relative;
   width: 100%;
 `;

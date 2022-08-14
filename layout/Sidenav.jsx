@@ -34,8 +34,8 @@ export default Sidebar;
 
 const Container = styled.div`
   position: fixed;
-  // top: 0;
-  // left: 0;
+  top: 0;
+  left: 0;
   height: 100vh !important;
   width: 100%;
   background: transparent;
