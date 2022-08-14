@@ -14,4 +14,5 @@ export const AppRoutes = {
   contact: "/contact",
   login: "/login",
   register: "/register",
+  forgotPassword: "/login",
 };
