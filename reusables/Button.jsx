@@ -57,14 +57,14 @@ const Button = ({
 export default Button;
 
 const Container = styled.button`
-  width: ${({ full }) => (full ? "100%" : "50%")};
+  width: ${({ full }) => (full ? "100%" : "200px")};
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
   height: 2.8rem;
   display: flex;
   gap: 0.75rem;
   justify-content: center;
   align-items: center;
-  border-radius: 20px;
+  border-radius: 5px;
   color: #fff;
   border: none;
   font-style: normal;
@@ -77,7 +77,7 @@ const Container = styled.button`
   ${(props) => css`
     ${props.primary &&
     css`
-      background: linear-gradient(90deg, #6149cd 0%, #a654ac 47%, #ea5f8b 100%);
+      background: linear-gradient(90deg, #000000 0%, #000009 47%, #0000009a 100%);
       box-shadow: 3.994px 22.651px 57px rgba(97, 73, 205, 0.259);
     `}
     ${props.light &&

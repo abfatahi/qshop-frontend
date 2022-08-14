@@ -14,20 +14,21 @@ const Searchbar = ({ onTextChange }) => (
 
 const SearchBar = styled.div`
   position: relative;
-  width: 100%;
+  min-width: 250px;
+
   form {
     display: flex;
     align-items: center;
     position: relative;
-    height: 2.5rem;
+    height: 2.3rem;
+    position: relative;
 
     .icon {
       position: absolute;
-      top: 0.4em;
       right: 0.3em;
-      transfrom: translateX(-50%);
+      transfrom: translateY(-50%);
       width: 1.5rem;
-      height: 1.5rem;
+      height: 1.2rem;
       cursor: pointer;
       color: #999;
 
@@ -38,7 +39,7 @@ const SearchBar = styled.div`
 
     input {
       background: #fff;
-      border: 1px solid #e5e5e5;
+      border: 1px solid #bdbdbd;
       padding: 1em 3.5em 1em 1em;
       height: 100%;
       border-radius: 5px;

@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import React, { useState } from 'react';
-import styled from 'styled-components';
-import { BsEye, BsEyeSlashFill } from 'react-icons/bs';
+import React, { useState } from "react";
+import styled from "styled-components";
+import { BsEye, BsEyeSlashFill } from "react-icons/bs";
 
 const Container = styled.div`
-  width: 100%;
+  width: ${({ full }) => (full ? "100%" : "80px")};
   .group {
     display: flex;
     align-items: center;
@@ -25,9 +25,9 @@ const Container = styled.div`
     input {
       background: transparent;
       border: 1px solid #e5e5e5;
-      padding: 0 3.5em 0 1em;
+      padding: 0 1em;
       height: 100%;
-      border-radius: 20px;
+      border-radius: 5px;
       font-style: normal;
       font-weight: 500;
       font-size: 1rem;
@@ -53,28 +53,29 @@ const Index = ({
   onKeyPress,
   fieldname,
   value,
-  readOnly
+  readOnly,
+  full,
 }) => {
   const [togglePassword, setTogglePassword] = useState(false);
   return (
-    <Container>
-      <div className='group'>
-        {inputType === 'password' ? (
+    <Container full={full}>
+      <div className="group">
+        {inputType === "password" ? (
           togglePassword ? (
-            <BsEye className='icon' onClick={() => setTogglePassword(false)} />
+            <BsEye className="icon" onClick={() => setTogglePassword(false)} />
           ) : (
             <BsEyeSlashFill
-              className='icon'
+              className="icon"
               onClick={() => setTogglePassword(true)}
             />
           )
         ) : (
-          ''
+          ""
         )}
-        {inputType === 'password' ? (
+        {inputType === "password" ? (
           <input
             name={fieldname}
-            type={!togglePassword ? 'password' : 'text'}
+            type={!togglePassword ? "password" : "text"}
             placeholder={placeholder}
             onChange={onTextChange}
           />
