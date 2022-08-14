@@ -19,12 +19,17 @@ const CartList = () => {
       <div className="mobile">
         <img src="/assets/productImage.jpeg" alt="Product" />
         <div className="details">
-          <div className="title">Design and Relax</div>
           <div className="title">
+            <b>Design and Relax</b>
+          </div>
+          <div className="flex">
+
+          <div className="qty">
             Quantity: <b>1</b>
           </div>
-          <div className="title">
+          <div className="amount">
             Subtotal: <b>$599.00</b>
+          </div>
           </div>
         </div>
       </div>
@@ -40,7 +45,7 @@ const Container = styled.div`
   border-left: 1px solid #bdbdbd;
   border-right: 1px solid #bdbdbd;
   border-bottom: 1px solid #bdbdbd;
-  
+
   @media screen and (max-width: 425px) {
     font-size: 1rem;
   }
@@ -54,9 +59,14 @@ const Container = styled.div`
     gap: 1rem;
 
     img {
-      width: 100px;
-      height: 80px;
+      width: 80px;
+      height: 40px;
       object-fit: fill;
+    }
+
+    .qty,
+    .amount {
+      font-size: 0.7em;
     }
   }
 
