@@ -60,7 +60,11 @@ export default function SingleProduct() {
           )}
           {isError && <h1>SOMETHING WENT WRONG</h1>}
           <div className="first_row">
-            <ImageLoader src={data?.images[0]} effect="blur" alt="Product" />
+            <ImageLoader
+              src={"/assets/productImage.jpeg"}
+              effect="blur"
+              alt="Product"
+            />
             <div className="details">
               <h1>{data?.title}</h1>
               <div className="amount">${data?.price?.toLocaleString()}</div>
