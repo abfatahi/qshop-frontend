@@ -12,7 +12,12 @@ const ProductCard = (props) => {
   };
   return (
     <Container onClick={(e) => handleClick(e, props?.id)} key={props?.id}>
-      <ImageLoader src={props?.images[0]} alt="" effect="blur" />
+      <ImageLoader
+        src={"/assets/productImage.jpeg"}
+        alt=""
+        effect="blur"
+        // placeholderSrc="/assets/productImage.jpeg"
+      />
       <h3>{props?.title}</h3>
       <h3>${props?.price?.toLocaleString()}</h3>
     </Container>
