@@ -9,6 +9,7 @@ import { cartSelector } from "../../redux/reducers/cart";
 
 export default function Cart() {
   const { yourCart } = useSelector(cartSelector);
+  const total = yourCart?.reduce((a, curr) => a + curr.subTotal, 0);
   return (
     <Layout
       title="Account - Cart"
@@ -27,7 +28,6 @@ export default function Cart() {
             {yourCart?.length > 0 && (
               <>
                 <div className="table_header">
-                  <div>S/N</div>
                   <div>Product</div>
                   <div>Image</div>
                   <div>Price</div>
@@ -36,10 +36,9 @@ export default function Cart() {
                   <div>...</div>
                 </div>
                 <div className="cover" />
-                <CartList />
-                <CartList />
-                <CartList />
-                <CartList />
+                {yourCart?.map((item, index) => {
+                  return <CartList key={index} {...item} />;
+                })}
                 <div className="table_footer">
                   <div className="flex">
                     <InputField full placeholder="coupon code" />
@@ -52,12 +51,12 @@ export default function Cart() {
                   <h1>Cart Total</h1>
                   <div className="subtotal">
                     <h4>Subtotal</h4>
-                    <p>$599.00</p>
+                    <p>${total.toLocaleString()}</p>
                   </div>
                   <div className="total">
                     <h4>Total</h4>
                     <p>
-                      <b>$599.00</b>
+                      <b>${total.toLocaleString()}</b>
                     </p>
                   </div>
                   <br />
@@ -127,13 +126,13 @@ const Container = styled.div`
       border-top: 4px solid #e5e5e5;
       background: #f4f4f4;
       font-weight: 300;
-      font-size:1.1rem;
+      font-size: 1.1rem;
     }
   }
 
   .table_header {
     display: grid;
-    grid-template-columns: 0.5fr 3fr 1fr 1fr 1fr 1fr 0.5fr;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 0.5fr;
     align-items: center;
     padding: 0.25rem 1rem;
     font-weight: 300;

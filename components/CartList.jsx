@@ -4,34 +4,34 @@ import { FaTimesCircle } from "react-icons/fa";
 import styled from "styled-components";
 import { InputField } from "../reusables";
 
-const CartList = () => {
+const CartList = (props) => {
   return (
     <Container>
       <div className="web">
-        <div className="title">1.</div>
-        <div className="title">Design and Relax</div>
+        {/* <div className="title">{props?.sn + 1}.</div> */}
+        <div className="title">{props?.title?.substring(0, 22)}</div>
         <img src="/assets/productImage.jpeg" alt="Product" />
-        <div className="amount">$599.00</div>
-        <InputField inputType={"number"} />
-        <div className="subtotal">$599.00</div>
+        <div className="amount">${props?.price?.toLocaleString()}</div>
+        <InputField inputType={"number"} value={props?.quantity} />
+        <div className="subtotal">${props?.subTotal?.toLocaleString()}</div>
         <FaTimesCircle className="close-btn" />
       </div>
       <div className="mobile">
         <img src="/assets/productImage.jpeg" alt="Product" />
         <div className="details">
           <div className="title">
-            <b>Design and Relax</b>
+            <b>{props?.title?.substring(0, 22)}</b>
           </div>
           <div className="flex">
             <div className="qty">
-              Quantity: <b>1</b>
+              Quantity: <b>{props?.quantity}</b>
             </div>
             <div className="amount">
-              Subtotal: <b>$599.00</b>
+              Subtotal: <b>${props?.subTotal?.toLocaleString()}</b>
             </div>
           </div>
         </div>
-        <FaTimesCircle className="close-btn" />
+        <FaTimesCircle className="close-btn btn" />
       </div>
     </Container>
   );
@@ -51,6 +51,7 @@ const Container = styled.div`
   }
 
   .mobile {
+    position: relative;
     padding: 0.5rem;
     @media screen and (min-width: 426px) {
       display: none;
@@ -68,12 +69,18 @@ const Container = styled.div`
     .amount {
       font-size: 0.7em;
     }
+
+    .btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+    }
   }
 
   .web {
     padding: 0.5rem 1rem;
     display: grid;
-    grid-template-columns: 0.5fr 3fr 1fr 1fr 1fr 1fr 0.5fr;
+    grid-template-columns: 3fr 1fr 1fr 1fr 1fr 0.5fr;
     align-items: center;
 
     @media screen and (max-width: 425px) {
