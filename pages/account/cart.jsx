@@ -23,13 +23,17 @@ export default function Cart() {
               <div>Subtotal</div>
               <div>...</div>
             </div>
+            <div className="cover"/>
+            <CartList />
+            <CartList />
+            <CartList />
             <CartList />
             <div className="table_footer">
               <div className="flex">
-                <InputField placeholder="coupon code" />
+                <InputField full placeholder="coupon code" />
                 <Button text="Apply Coupon" primary />
               </div>
-              <Button text="Update Cart" primary />
+              {/* <Button text="Update Cart" primary /> */}
             </div>
             <br />
             <div className="cart_details">
@@ -85,8 +89,15 @@ const Container = styled.div`
 
   @media screen and (max-width: 768px) {
     grid-template-columns: 1fr;
-    gap:2rem;
+    gap: 2rem;
   }
+
+  @media screen and (max-width: 425px) {
+    .cover{
+      border-top: 1px solid #bdbdbd;
+    }
+  }
+
 
   .table_header {
     display: grid;
@@ -97,6 +108,10 @@ const Container = styled.div`
     font-size: 1.1rem;
     border: 1px solid #bdbdbd;
     border-radius: 3px 3px 0 0;
+
+    @media screen and (max-width: 425px) {
+      display: none;
+    }
   }
 
   .table_footer {
@@ -110,11 +125,26 @@ const Container = styled.div`
     border-left: 1px solid #bdbdbd;
     border-right: 1px solid #bdbdbd;
     border-radius: 0 0 3px 3px;
+
+    @media screen and (max-width: 425px) {
+      flex-direction: column;
+      gap: 0.5rem;
+      align-items: flex-start;
+
+      .flex {
+        gap: 0.5rem;
+      }
+    }
   }
 
   .cart_details {
     width: 400px;
     float: right;
+
+    @media screen and (max-width: 425px) {
+      width: 100%;
+      float: left;
+    }
 
     h1 {
       font-size: 1.7em;
@@ -165,7 +195,7 @@ const Container = styled.div`
       border-right: 1px solid #bdbdbd;
       border-radius: 0 0 3px 3px;
 
-       @media screen and (max-width: 768px) {
+      @media screen and (max-width: 768px) {
         font-size: 1em;
       }
     }

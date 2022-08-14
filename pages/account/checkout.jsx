@@ -14,8 +14,8 @@ export default function Checkout() {
           <div className="left">
             <h1>Checkout</h1>
             <form action="">
-            <hr />
-            <h3>Billing details</h3>
+              <hr />
+              <h3>Billing details</h3>
               <div className="flex">
                 <div className="group">
                   <p>
@@ -123,11 +123,12 @@ const Container = styled.div`
   gap: 3rem;
 
   @media screen and (max-width: 425px) {
-    grid-template-columns:1fr;
+    grid-template-columns: 1fr;
+    gap: 1rem;
   }
 
   .table_header {
-    margin-top:1rem;
+    margin-top: 1rem;
     display: grid;
     grid-template-columns: 3fr 1fr;
     align-items: center;
@@ -178,7 +179,7 @@ const Container = styled.div`
       gap: 1rem;
 
       @media screen and (max-width: 425px) {
-       flex-direction:column;
+        flex-direction: column;
       }
     }
 

@@ -9,7 +9,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     position: relative;
-    height: ${({ full }) => (full ? "2.5rem" : "2.2rem")};
+    height: 2.2rem;
 
     .icon {
       position: absolute;
