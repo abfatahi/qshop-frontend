@@ -122,6 +122,10 @@ const Container = styled.div`
   grid-template-columns: 4fr 1fr;
   gap: 3rem;
 
+  @media screen and (max-width: 425px) {
+    grid-template-columns:1fr;
+  }
+
   .table_header {
     margin-top:1rem;
     display: grid;
@@ -164,10 +168,18 @@ const Container = styled.div`
     gap: 1rem;
     width: 70%;
 
+    @media screen and (max-width: 768px) {
+      width: 100%;
+    }
+
     .flex {
       width: 100%;
       display: flex;
       gap: 1rem;
+
+      @media screen and (max-width: 425px) {
+       flex-direction:column;
+      }
     }
 
     .group {

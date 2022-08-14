@@ -18,6 +18,10 @@ export default styled.div`
     padding: 20px 32px;
   }
 
+  @media screen and (max-width: 768px) {
+    justify-content: flex-start;
+  }
+
   @media screen and (max-width: 425px) {
     height: 100px;
     gap: 1rem;
@@ -47,6 +51,10 @@ export default styled.div`
     margin-left: 3rem;
 
     @media screen and (max-width: 768px) {
+      margin-left: 5rem;
+    }
+
+    @media screen and (max-width: 425px) {
       margin-left: 0;
     }
   }
@@ -65,7 +73,7 @@ export default styled.div`
 
   .hamburger {
     position: absolute;
-    top: 16px;
+    // top: 16px;
     right: 24px;
     font-size: 1.3rem;
     cursor: pointer;

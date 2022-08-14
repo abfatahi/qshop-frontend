@@ -122,6 +122,10 @@ const Container = styled.div`
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem;
 
+    @media screen and (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+
     h1 {
       font-size: 2em;
       font-weight: bold;
@@ -153,4 +157,12 @@ const ImageLoader = styled(LazyLoadImage)`
   height: 500px !important;
   object-fit: fill !important;
   transition: all 0.3s ease-in-out;
+
+  @media screen and (max-width: 768px) {
+    height: 400px !important;
+  }
+
+  @media screen and (max-width: 425px) {
+    height: 300px !important;
+  }
 `;

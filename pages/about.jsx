@@ -65,6 +65,10 @@ const Container = styled.div`
   grid-template-columns: 4fr 1fr;
   gap: 2rem;
 
+  @media screen and (max-width: 425px) {
+    grid-template-columns: 1fr;
+  }
+
   .left_frame {
     display: flex;
     flex-direction: column;
@@ -73,12 +77,20 @@ const Container = styled.div`
     img {
       width: 100%;
       height: 400px;
+
+      @media screen and (max-width: 425px) {
+        height: 220px;
+      }
     }
 
     p {
       text-align: justify;
       font-weight: 300;
       font-size: 1.2rem;
+
+      @media screen and (max-width: 425px) {
+        font-size: 1rem;
+      }
     }
   }
 

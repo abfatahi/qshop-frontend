@@ -64,6 +64,10 @@ const Container = styled.div`
     gap: 1.5rem;
     width: 60%;
 
+    @media screen and (max-width: 425px) {
+      width: 100%;
+    }
+
     .flex {
       display: flex;
       gap: 0.2rem;

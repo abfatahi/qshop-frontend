@@ -16,11 +16,11 @@ export default function Home() {
         <>
           <Container>
             {isLoading &&
-              Array.from({ length: 6 }, (index) => {
+              Array.from({ length: 8 }, (index) => {
                 return <ProductCardSkeleton key={index} />;
               })}
             {isError &&
-              Array.from({ length: 6 }, (index) => {
+              Array.from({ length: 8 }, (index) => {
                 return <ProductCardSkeleton key={index} />;
               })}
             {data &&

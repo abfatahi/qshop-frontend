@@ -71,6 +71,10 @@ const Container = styled.div`
   grid-template-columns: 4fr 1fr;
   gap: 4rem;
 
+  @media screen and (max-width: 425px) {
+    grid-template-columns: 1fr;
+  }
+
   .left_frame {
     display: flex;
     flex-direction: column;
@@ -102,18 +106,30 @@ const BlogPost = styled.div`
     :hover {
       opacity: 0.8;
     }
+
+    @media screen and (max-width: 425px) {
+      height: 220px;
+    }
   }
 
   h4 {
     text-align: justify;
-    font-weight: 400;
+    font-weight: 500;
     font-size: 1.4rem;
     text-transform: uppercase;
+
+    @media screen and (max-width: 425px) {
+      font-size: 1rem;
+    }
   }
   p {
     text-align: justify;
     font-weight: 300;
     font-size: 1.1rem;
+
+    @media screen and (max-width: 425px) {
+      font-size: 1rem;
+    }
   }
 
   button {
