@@ -9,7 +9,7 @@ const Container = styled.div`
     display: flex;
     align-items: center;
     position: relative;
-    height: 2.8rem;
+    height: ${({ full }) => (full ? "2.5rem" : "2.2rem")};
 
     .icon {
       position: absolute;
@@ -25,11 +25,11 @@ const Container = styled.div`
     input {
       background: transparent;
       border: 1px solid #e5e5e5;
-      padding: 0 1em;
+      padding: 0 0.5em;
       height: 100%;
       border-radius: 5px;
       font-style: normal;
-      font-weight: 500;
+      font-weight: 300;
       font-size: 1rem;
       letter-spacing: 0.018em;
       color: #000000;

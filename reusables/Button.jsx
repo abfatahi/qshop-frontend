@@ -58,8 +58,8 @@ export default Button;
 
 const Container = styled.button`
   width: ${({ full }) => (full ? "100%" : "200px")};
+  height: ${({ full }) => (full ? "2.8rem" : "2.2rem")};
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
-  height: 2.8rem;
   display: flex;
   gap: 0.75rem;
   justify-content: center;
