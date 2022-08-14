@@ -4,8 +4,11 @@ import styled from "styled-components";
 import Link from "next/link";
 import { AppRoutes } from "../../utils/constants";
 import { Button, InputField } from "../../reusables";
+import { useSelector } from "react-redux";
+import { cartSelector } from "../../redux/reducers/cart";
 
 export default function Cart() {
+  const { yourCart } = useSelector(cartSelector);
   return (
     <Layout
       title="Account - Cart"
@@ -14,43 +17,54 @@ export default function Cart() {
           <div className="left">
             <h1>Cart</h1>
             <br />
-            <div className="table_header">
-              <div>S/N</div>
-              <div>Product</div>
-              <div>Image</div>
-              <div>Price</div>
-              <div>Quantity</div>
-              <div>Subtotal</div>
-              <div>...</div>
-            </div>
-            <div className="cover"/>
-            <CartList />
-            <CartList />
-            <CartList />
-            <CartList />
-            <div className="table_footer">
-              <div className="flex">
-                <InputField full placeholder="coupon code" />
-                <Button text="Apply Coupon" primary />
+            {yourCart?.length === 0 && (
+              <div className="empty_cart_wrapper">
+                <div className="empty_cart">Your cart is currently empty</div>
+                <br />
+                <Link href={AppRoutes.home}>Return to Shop</Link>
               </div>
-              {/* <Button text="Update Cart" primary /> */}
-            </div>
-            <br />
-            <div className="cart_details">
-              <h1>Cart Total</h1>
-              <div className="subtotal">
-                <h4>Subtotal</h4>
-                <p>$599.00</p>
-              </div>
-              <div className="total">
-                <h4>Total</h4>
-                <p>
-                  <b>$599.00</b>
-                </p>
-              </div>
-              <br />
-              <Button full text="Proceed to checkout" primary />
-            </div>
+            )}
+            {yourCart?.length > 0 && (
+              <>
+                <div className="table_header">
+                  <div>S/N</div>
+                  <div>Product</div>
+                  <div>Image</div>
+                  <div>Price</div>
+                  <div>Quantity</div>
+                  <div>Subtotal</div>
+                  <div>...</div>
+                </div>
+                <div className="cover" />
+                <CartList />
+                <CartList />
+                <CartList />
+                <CartList />
+                <div className="table_footer">
+                  <div className="flex">
+                    <InputField full placeholder="coupon code" />
+                    <Button text="Apply Coupon" primary />
+                  </div>
+                  {/* <Button text="Update Cart" primary /> */}
+                </div>
+                <br />
+                <div className="cart_details">
+                  <h1>Cart Total</h1>
+                  <div className="subtotal">
+                    <h4>Subtotal</h4>
+                    <p>$599.00</p>
+                  </div>
+                  <div className="total">
+                    <h4>Total</h4>
+                    <p>
+                      <b>$599.00</b>
+                    </p>
+                  </div>
+                  <br />
+                  <Button full text="Proceed to checkout" primary />
+                </div>
+              </>
+            )}
           </div>
           <div className="right_frame">
             <br />
@@ -93,11 +107,29 @@ const Container = styled.div`
   }
 
   @media screen and (max-width: 425px) {
-    .cover{
+    .cover {
       border-top: 1px solid #bdbdbd;
     }
   }
 
+  .empty_cart_wrapper {
+    a {
+      width: max-content;
+      padding: 0.5rem 1rem;
+      background: #e5e5e5;
+      font-weight: 300;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .empty_cart {
+      width: 100%;
+      padding: 1rem 3rem;
+      border-top: 4px solid #e5e5e5;
+      background: #f4f4f4;
+      font-weight: 300;
+      font-size:1.1rem;
+    }
+  }
 
   .table_header {
     display: grid;
