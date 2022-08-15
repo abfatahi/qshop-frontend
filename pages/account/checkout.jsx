@@ -4,8 +4,12 @@ import styled from "styled-components";
 import Link from "next/link";
 import { AppRoutes } from "../../utils/constants";
 import { Button, InputField } from "../../reusables";
+import { useSelector } from "react-redux";
+import { cartSelector } from "../../redux/reducers/cart";
 
 export default function Checkout() {
+  const { yourCart } = useSelector(cartSelector);
+  const total = yourCart?.reduce((a, curr) => a + curr.subTotal, 0);
   return (
     <Layout
       title="Account - Checkout"
@@ -13,6 +17,7 @@ export default function Checkout() {
         <Container>
           <div className="left">
             <h1>Checkout</h1>
+            <br />
             <form action="">
               <hr />
               <h3>Billing details</h3>
@@ -64,27 +69,43 @@ export default function Checkout() {
                   <InputField full />
                 </div>
               </div>
-              <div className="order_details">
-                <h3>
-                  <b>Your order</b>
-                </h3>
-                <div className="table_header">
-                  <h4>Product</h4>
-                  <h4>Subtotal</h4>
+              {yourCart?.length === 0 && (
+                <div className="empty_cart_wrapper">
+                  <br />
+                  <div className="empty_cart">Your cart is currently empty</div>
+                  <br />
+                  <Link href={AppRoutes.home}>Return to Shop</Link>
                 </div>
-                <OrderList>
-                  <h4>
-                    Design and Relax <span>x 1</span>
-                  </h4>
-                  <h4>$599.00</h4>
-                </OrderList>
-                <div className="table_footer">
-                  <h4>Total</h4>
-                  <h4>$599.00</h4>
-                </div>
-              </div>
-              <br />
-              <Button text="Place order" primary />
+              )}
+              {yourCart?.length > 0 && (
+                <>
+                  <div className="order_details">
+                    <h3>
+                      <b>Your order</b>
+                    </h3>
+                    <div className="table_header">
+                      <h4>Product</h4>
+                      <h4>Subtotal</h4>
+                    </div>
+                    {yourCart?.map((item, index) => {
+                      return (
+                        <OrderList key={index}>
+                          <h4>
+                            {item?.title} <span>x {item?.quantity}</span>
+                          </h4>
+                          <h4>${item?.subTotal?.toLocaleString()}</h4>
+                        </OrderList>
+                      );
+                    })}
+                    <div className="table_footer">
+                      <h4>Total</h4>
+                      <h4>${total?.toLocaleString()}</h4>
+                    </div>
+                  </div>
+                  <br />
+                  <Button text="Place order" primary />
+                </>
+              )}
             </form>
           </div>
           <div className="right_frame">

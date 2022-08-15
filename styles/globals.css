@@ -43,3 +43,21 @@ hr {
   border: none;
   border-bottom: 1px solid #0000004a;
 }
+
+.empty_cart_wrapper>a {
+  width: max-content;
+  padding: 0.5rem 1rem;
+  background: #e5e5e5;
+  font-weight: 300;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.empty_cart_wrapper>.empty_cart {
+  width: 100%;
+  padding: 1rem 3rem;
+  border-top: 4px solid #e5e5e5;
+  background: #f4f4f4;
+  font-weight: 300;
+  font-size: 1.1rem;
+}

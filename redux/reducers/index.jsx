@@ -9,6 +9,7 @@ const cartPersistConfig = {
   storage,
   whitelist: ["yourCart"],
 };
+
 export const reducer = combineReducers({
   sidebar: sidebarSlice.reducer,
   cart: persistReducer(cartPersistConfig, cartSlice.reducer),
