@@ -13,10 +13,9 @@ const ProductCard = (props) => {
   return (
     <Container onClick={(e) => handleClick(e, props?.id)} key={props?.id}>
       <ImageLoader
-        src={"/assets/imagePlaceholder.png"}
+        src={`https://picsum.photos/640/480?random=${props?.id}`}
         alt=""
         effect="blur"
-        placeholderSrc={"/assets/imagePlaceholder.png"}
       />
       <h3>{props?.title}</h3>
       <h3>${props?.price?.toLocaleString()}</h3>
