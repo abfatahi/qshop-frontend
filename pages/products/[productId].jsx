@@ -83,7 +83,7 @@ export default function SingleProduct() {
           {isError && <h1>SOMETHING WENT WRONG</h1>}
           <div className="first_row">
             <ImageLoader
-              src={"/assets/imagePlaceholder.png"}
+              src={`https://picsum.photos/640/480?random=${data?.id}`}
               effect="blur"
               alt="Product"
             />
