@@ -86,6 +86,7 @@ export default function SingleProduct() {
               src={`https://picsum.photos/640/480?random=${data?.id}`}
               effect="blur"
               alt="Product"
+              placeholderSrc={'/assets/imagePlaceholder.png'}
             />
             <div className="details">
               <h1>{data?.title}</h1>
