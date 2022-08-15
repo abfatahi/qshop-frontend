@@ -1,15 +1,68 @@
-import CartList from "../../components/CartList";
+import React from "react";
 import Layout from "../../layout";
 import styled from "styled-components";
 import Link from "next/link";
 import { AppRoutes } from "../../utils/constants";
 import { Button, InputField } from "../../reusables";
-import { useSelector } from "react-redux";
-import { cartSelector } from "../../redux/reducers/cart";
+import { useDispatch, useSelector } from "react-redux";
+import { cartSelector, handleEmptyCart } from "../../redux/reducers/cart";
+import { toast } from "react-toastify";
 
 export default function Checkout() {
+  const dispatch = useDispatch();
   const { yourCart } = useSelector(cartSelector);
   const total = yourCart?.reduce((a, curr) => a + curr.subTotal, 0);
+  const [userData, setUserData] = React.useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    address: "",
+    country: "",
+    zipcode: "",
+  });
+  const { firstName, lastName, email, phone, address, country, zipcode } =
+    userData;
+  const [submit, setSubmit] = React.useState(false);
+  const [success, setSuccess] = React.useState(false);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserData({ ...userData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSubmit(true);
+
+    if (
+      firstName &&
+      lastName &&
+      email &&
+      phone &&
+      address &&
+      country &&
+      zipcode
+    )
+      setSuccess(true);
+  };
+
+  if (success) {
+    toast.success(
+      <span style={{ color: "black" }}>
+        Your order has been placed successfully!
+      </span>,
+      {
+        toastId: "order-placed",
+        onClose: () => {
+          dispatch(handleEmptyCart());
+          setSuccess(false);
+          window.location.reload();
+        },
+      }
+    );
+  }
+
   return (
     <Layout
       title="Account - Checkout"
@@ -18,7 +71,7 @@ export default function Checkout() {
           <div className="left">
             <h1>Checkout</h1>
             <br />
-            <form action="">
+            <form onSubmit={handleSubmit}>
               <hr />
               <h3>Billing details</h3>
               <div className="flex">
@@ -26,13 +79,27 @@ export default function Checkout() {
                   <p>
                     First name <span>*</span>
                   </p>
-                  <InputField full />
+                  <InputField
+                    fieldname="firstName"
+                    onTextChange={handleChange}
+                    full
+                  />
+                  {submit && !firstName && (
+                    <p className="error-msg">First name is required</p>
+                  )}
                 </div>
                 <div className="group">
                   <p>
                     Last name <span>*</span>
                   </p>
-                  <InputField full />
+                  <InputField
+                    fieldname="lastName"
+                    onTextChange={handleChange}
+                    full
+                  />
+                  {submit && !lastName && (
+                    <p className="error-msg">Last name is required</p>
+                  )}
                 </div>
               </div>
               <div className="flex">
@@ -40,33 +107,68 @@ export default function Checkout() {
                   <p>
                     Email <span>*</span>
                   </p>
-                  <InputField full />
+                  <InputField
+                    fieldname="email"
+                    onTextChange={handleChange}
+                    full
+                  />
+                  {submit && !email && (
+                    <p className="error-msg">Email is required</p>
+                  )}
                 </div>
                 <div className="group">
                   <p>
                     Phone Number <span>*</span>
                   </p>
-                  <InputField full />
+                  <InputField
+                    fieldname="phone"
+                    onTextChange={handleChange}
+                    full
+                  />
+                  {submit && !phone && (
+                    <p className="error-msg">Phone number is required</p>
+                  )}
                 </div>
               </div>
               <div className="group">
                 <p>
                   Address <span>*</span>
                 </p>
-                <InputField full />
+                <InputField
+                  fieldname="address"
+                  onTextChange={handleChange}
+                  full
+                />
+                {submit && !address && (
+                  <p className="error-msg">Address is required</p>
+                )}
               </div>
               <div className="flex">
                 <div className="group">
                   <p>
                     Country <span>*</span>
                   </p>
-                  <InputField full />
+                  <InputField
+                    fieldname="country"
+                    onTextChange={handleChange}
+                    full
+                  />
+                  {submit && !country && (
+                    <p className="error-msg">Country is required</p>
+                  )}
                 </div>
                 <div className="group">
                   <p>
                     Zip Code <span>*</span>
                   </p>
-                  <InputField full />
+                  <InputField
+                    fieldname="zipcode"
+                    onTextChange={handleChange}
+                    full
+                  />
+                  {submit && !zipcode && (
+                    <p className="error-msg">Zipcode is required</p>
+                  )}
                 </div>
               </div>
               {yourCart?.length === 0 && (

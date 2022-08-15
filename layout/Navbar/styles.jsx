@@ -83,20 +83,6 @@ export default styled.div`
     }
   }
 
-  .cart_group {
-    position: relative;
-    .indicator {
-      position: absolute;
-      top: -5px;
-      right: -13px;
-      border-radius: 50%;
-      background: #000;
-      color: #fff;
-      font-size: 10px;
-      padding: 2px 5px;
-    }
-  }
-
   a {
     font-weight: 300;
     font-size: 1.2rem;

@@ -36,7 +36,6 @@ export default function SingleProduct() {
 
   const addToCart = async () => {
     const { id, title, price, images } = data;
-    await new Promise((res) => setTimeout(res, 1000));
     dispatch(
       handleAddToCart({
         id,

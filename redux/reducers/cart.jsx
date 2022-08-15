@@ -20,6 +20,10 @@ export const cartSlice = createSlice({
       state.yourCart = state.yourCart.filter((item) => item.id !== payload);
       return state;
     },
+    handleEmptyCart: (state) => {
+      state.yourCart = [];
+      return state;
+    },
     clearState: (state) => {
       state.duplicate = false;
       state.success = false;
@@ -28,7 +32,11 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { handleAddToCart, handleRemoveFromCart, clearState } =
-  cartSlice.actions;
+export const {
+  handleAddToCart,
+  handleRemoveFromCart,
+  handleEmptyCart,
+  clearState,
+} = cartSlice.actions;
 
 export const cartSelector = (state) => state.cart;

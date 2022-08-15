@@ -61,3 +61,25 @@ hr {
   font-weight: 300;
   font-size: 1.1rem;
 }
+
+.cart_group {
+  position: relative;
+}
+
+.indicator {
+  position: absolute;
+  top: -5px;
+  right: -13px;
+  border-radius: 50%;
+  background: #000;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 5px;
+}
+
+.error-msg {
+	color: #e15554 !important;
+	font-size: 0.75rem !important;
+	font-weight: 200 !important;
+	font-style: normal;
+}
