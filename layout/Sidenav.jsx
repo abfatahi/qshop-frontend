@@ -2,9 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import { FaChevronDown, FaChevronUp, FaTimes } from "react-icons/fa";
 import { AppRoutes } from "../utils/constants";
+import { useSelector } from "react-redux";
+import { cartSelector } from "../redux/reducers/cart";
 
 const Sidebar = ({ showSidebar, handleSidebarClose }) => {
   const [show, setShow] = React.useState(false);
+  const { yourCart } = useSelector(cartSelector);
   return (
     <Container showSidebar={showSidebar}>
       <div className="nav_wrapper">
@@ -51,9 +54,14 @@ const Sidebar = ({ showSidebar, handleSidebarClose }) => {
         <NavItem onClick={handleSidebarClose} href={AppRoutes.checkout}>
           Checkout
         </NavItem>
-        <NavItem onClick={handleSidebarClose} href={AppRoutes.cart}>
-          Cart
-        </NavItem>
+        <div className="cart_group">
+          <NavItem onClick={handleSidebarClose} href={AppRoutes.cart}>
+            Cart
+          </NavItem>
+          {yourCart?.length > 0 && (
+            <div className="indicator">{yourCart?.length}</div>
+          )}
+        </div>
         <NavItem onClick={handleSidebarClose} href={AppRoutes.blog}>
           Blog
         </NavItem>
