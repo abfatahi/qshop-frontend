@@ -17,7 +17,7 @@ const CartList = (props) => {
         <FaTimesCircle className="close-btn" />
       </div>
       <div className="mobile">
-        <img src="/assets/productImage.jpeg" alt="Product" />
+        <img src={`https://picsum.photos/640/480?random=${props?.id}`} alt="Product" />
         <div className="details">
           <div className="title">
             <b>{props?.title?.substring(0, 22)}</b>
