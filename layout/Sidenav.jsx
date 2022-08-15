@@ -86,7 +86,7 @@ const Container = styled.div`
     display: flex;
     width: 250px;
     flex-direction: column;
-    row-gap: 1rem;
+    row-gap: 1.3rem;
     padding: 5rem 2rem 0;
     height: 100vh;
   }
@@ -94,7 +94,7 @@ const Container = styled.div`
   .dropdown_nav {
     font-style: normal;
     font-weight: 500;
-    font-size: 16px;
+    font-size: 17px;
     line-height: 16px;
     color: #ffffff;
     display: flex;
@@ -127,7 +127,7 @@ const Container = styled.div`
 const NavItem = styled.a`
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 17px;
   line-height: 16px;
   color: #ffffff;
 

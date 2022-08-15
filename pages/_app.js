@@ -9,14 +9,19 @@ import { ErrorBoundary } from "react-error-boundary";
 import ErrorHandler from "../components/ErrorHandler";
 import { Provider } from "react-redux";
 import store from "../redux/configureStore";
+import { PersistGate } from "redux-persist/lib/integration/react";
+import { persistStore } from "redux-persist";
+let persistor = persistStore(store);
 
 function MyApp({ Component, pageProps }) {
   return (
     <>
       <Provider store={store}>
-        <ErrorBoundary FallbackComponent={<ErrorHandler />}>
-          <Component {...pageProps} />
-        </ErrorBoundary>
+        <PersistGate loading={null} persistor={persistor}>
+          <ErrorBoundary FallbackComponent={<ErrorHandler />}>
+            <Component {...pageProps} />
+          </ErrorBoundary>
+        </PersistGate>
       </Provider>
       <ToastContainer
         position="top-right"

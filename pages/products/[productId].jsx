@@ -6,10 +6,16 @@ import { useRouter } from "next/router";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { Button, InputField } from "../../reusables";
 import Skeleton from "react-loading-skeleton";
-import { useDispatch } from "react-redux";
-import { handleAddToCart } from "../../redux/reducers/cart";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  cartSelector,
+  clearState,
+  handleAddToCart,
+} from "../../redux/reducers/cart";
+import { toast } from "react-toastify";
 
 export default function SingleProduct() {
+  const { success, duplicate } = useSelector(cartSelector);
   const dispatch = useDispatch();
   const router = useRouter();
   const { productId } = router.query;
@@ -26,11 +32,9 @@ export default function SingleProduct() {
     };
   };
   const { data, isLoading, isError } = useFetch();
-  const [quantity, setQuantity] = React.useState(10);
-  const [addToCartLoading, setAddToCartLoading] = React.useState(false);
+  const [quantity, setQuantity] = React.useState(1);
 
   const addToCart = async () => {
-    setAddToCartLoading(true);
     const { id, title, price, images } = data;
     await new Promise((res) => setTimeout(res, 1000));
     dispatch(
@@ -43,9 +47,31 @@ export default function SingleProduct() {
         subTotal: parseFloat(price) * parseFloat(quantity),
       })
     );
-    setAddToCartLoading(true);
   };
 
+  if (success) {
+    toast.success(
+      <span style={{ color: "black" }}>
+        <b>{data?.title}</b> has been succesfully added to your cart!
+      </span>,
+      {
+        toastId: "add-to-cart",
+      }
+    );
+    dispatch(clearState());
+  }
+
+  if (duplicate) {
+    toast.error(
+      <span style={{ color: "black" }}>
+        <b>{data?.title}</b> already exist in your cart
+      </span>,
+      {
+        toastId: "add-to-cart",
+      }
+    );
+    dispatch(clearState());
+  }
   return (
     <Layout
       title="Product Details"
@@ -86,7 +112,7 @@ export default function SingleProduct() {
               src={`https://picsum.photos/640/480?random=${data?.id}`}
               effect="blur"
               alt="Product"
-              placeholderSrc={'/assets/imagePlaceholder.png'}
+              placeholderSrc={"/assets/imagePlaceholder.png"}
             />
             <div className="details">
               <h1>{data?.title}</h1>
@@ -103,7 +129,11 @@ export default function SingleProduct() {
               </div>
               <br />
               <div className="flex">
-                <InputField inputType="number" placeholder={"Qty"} />
+                <InputField
+                  inputType="number"
+                  placeholder={"Qty"}
+                  onTextChange={(e) => setQuantity(e.target.value)}
+                />
                 <Button text="Add to Cart" primary onClick={addToCart} />
               </div>
             </div>
@@ -139,6 +169,9 @@ const Container = styled.div`
   }
 
   p {
+    margin:0;
+    padding:0;
+    line-height:150%;
     font-weight: 200;
     font-size: 1rem;
     text-align: justify;

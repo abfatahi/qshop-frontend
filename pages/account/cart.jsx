@@ -6,8 +6,10 @@ import { AppRoutes } from "../../utils/constants";
 import { Button, InputField } from "../../reusables";
 import { useSelector } from "react-redux";
 import { cartSelector } from "../../redux/reducers/cart";
+import { useRouter } from "next/router";
 
 export default function Cart() {
+  const router = useRouter();
   const { yourCart } = useSelector(cartSelector);
   const total = yourCart?.reduce((a, curr) => a + curr.subTotal, 0);
   return (
@@ -60,7 +62,12 @@ export default function Cart() {
                     </p>
                   </div>
                   <br />
-                  <Button full text="Proceed to checkout" primary />
+                  <Button
+                    onClick={() => router.push(AppRoutes.checkout)}
+                    full
+                    text="Proceed to checkout"
+                    primary
+                  />
                 </div>
               </>
             )}
@@ -108,25 +115,6 @@ const Container = styled.div`
   @media screen and (max-width: 425px) {
     .cover {
       border-top: 1px solid #bdbdbd;
-    }
-  }
-
-  .empty_cart_wrapper {
-    a {
-      width: max-content;
-      padding: 0.5rem 1rem;
-      background: #e5e5e5;
-      font-weight: 300;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    .empty_cart {
-      width: 100%;
-      padding: 1rem 3rem;
-      border-top: 4px solid #e5e5e5;
-      background: #f4f4f4;
-      font-weight: 300;
-      font-size: 1.1rem;
     }
   }
 
