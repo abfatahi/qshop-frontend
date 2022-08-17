@@ -4,19 +4,14 @@ import { FaTimesCircle } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import { handleRemoveFromCart } from "../redux/reducers/cart";
-import { InputField } from "../reusables";
 
 const CartList = (props) => {
   const dispatch = useDispatch();
   return (
     <Container>
       <div className="web">
-        {/* <div className="title">{props?.sn + 1}.</div> */}
         <div className="title">{props?.title?.substring(0, 22)}</div>
-        <img
-          src={`https://picsum.photos/640/480?random=${props?.id}`}
-          alt="Product"
-        />
+        <img src={props?.images[0]} alt="Product" />
         <div className="amount">${props?.price?.toLocaleString()}</div>
         <div className="title">{props?.quantity}</div>
         <div className="subtotal">${props?.subTotal?.toLocaleString()}</div>
@@ -26,10 +21,7 @@ const CartList = (props) => {
         />
       </div>
       <div className="mobile">
-        <img
-          src={`https://picsum.photos/640/480?random=${props?.id}`}
-          alt="Product"
-        />
+        <img src={props?.images[0]} alt="Product" />
         <div className="details">
           <div className="title">
             <b>{props?.title?.substring(0, 22)}</b>

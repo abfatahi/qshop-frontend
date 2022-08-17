@@ -13,7 +13,8 @@ const ProductCard = (props) => {
   return (
     <Container onClick={(e) => handleClick(e, props?.id)} key={props?.id}>
       <ImageLoader
-        src={`https://picsum.photos/640/480?random=${props?.id}`}
+        // src={`https://picsum.photos/640/480?random=${props?.id}`}
+        src={props?.images[0]}
         alt=""
         effect="blur"
         placeholderSrc={'/assets/imagePlaceholder.png'}
