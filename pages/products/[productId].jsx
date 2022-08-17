@@ -108,7 +108,8 @@ export default function SingleProduct() {
           {isError && <h1>SOMETHING WENT WRONG</h1>}
           <div className="first_row">
             <ImageLoader
-              src={`https://picsum.photos/640/480?random=${data?.id}`}
+              src={data?.images[0]}
+              // src={`https://picsum.photos/640/480?random=${data?.id}`}
               effect="blur"
               alt="Product"
               placeholderSrc={"/assets/imagePlaceholder.png"}
@@ -168,9 +169,9 @@ const Container = styled.div`
   }
 
   p {
-    margin:0;
-    padding:0;
-    line-height:150%;
+    margin: 0;
+    padding: 0;
+    line-height: 150%;
     font-weight: 200;
     font-size: 1rem;
     text-align: justify;

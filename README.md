@@ -2,7 +2,7 @@
 An ecommerce platform where user can shop for goods ranging from clothes, shoes, furniture, electronics and many more.
 
 ## DEPLOYMENT INFO
-This app has been deployed to production using [Vercel]; below is the production link:
+This app has been deployed to production using `Vercel`. Below is the production link:
 [production-link](https://shopper-frontend.vercel.app)
 
 ## REPO INFO

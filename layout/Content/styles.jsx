@@ -8,7 +8,8 @@ export default styled.div`
   width: 100%;
   min-height: calc(100vh - 80px);
 
-  @media screen and (max-width:1024px){
+
+  @media screen and (max-width:1200px){
     padding: 20px 24px 100px;
   }
 
