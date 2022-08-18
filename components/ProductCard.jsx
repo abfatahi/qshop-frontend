@@ -10,6 +10,7 @@ const ProductCard = (props) => {
     e.preventDefault();
     router.push(`/products/${id}`);
   };
+  console.log(props);
   return (
     <Container onClick={(e) => handleClick(e, props?.id)} key={props?.id}>
       <ImageLoader

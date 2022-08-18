@@ -11,7 +11,7 @@ const CartList = (props) => {
     <Container>
       <div className="web">
         <div className="title">{props?.title?.substring(0, 22)}</div>
-        <img src={props?.images[0]} alt="Product" />
+        <img src={props?.image} alt="Product" />
         <div className="amount">${props?.price?.toLocaleString()}</div>
         <div className="title">{props?.quantity}</div>
         <div className="subtotal">${props?.subTotal?.toLocaleString()}</div>
@@ -21,7 +21,7 @@ const CartList = (props) => {
         />
       </div>
       <div className="mobile">
-        <img src={props?.images[0]} alt="Product" />
+        <img src={props?.image} alt="Product" />
         <div className="details">
           <div className="title">
             <b>{props?.title?.substring(0, 22)}</b>
