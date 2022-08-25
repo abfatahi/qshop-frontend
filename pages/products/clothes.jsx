@@ -1,10 +1,10 @@
 import React from "react";
 import Layout from "../../layout";
-import styled from "styled-components";
 import ProductCard from "../../components/ProductCard";
 import ProductCardSkeleton from "../../components/ProductCardSkeleton";
 import { Pagination } from "antd";
 import useSWR from "swr";
+import { Container } from "./index";
 
 export default function Clothes() {
   const { data, isLoading, isError } = useFetch();
@@ -64,17 +64,3 @@ const useFetch = () => {
     isError: error,
   };
 };
-
-const Container = styled.div`
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-
-  @media screen and (max-width: 768px) {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  @media screen and (max-width: 425px) {
-    grid-template-columns: 1fr;
-  }
-`;

@@ -106,45 +106,50 @@ export default function SingleProduct() {
             </>
           )}
           {isError && <h1>SOMETHING WENT WRONG</h1>}
-          <div className="first_row">
-            <ImageLoader
-              src={data?.images[0]}
-              // src={`https://picsum.photos/640/480?random=${data?.id}`}
-              effect="blur"
-              alt="Product"
-              placeholderSrc={"/assets/imagePlaceholder.png"}
-            />
-            <div className="details">
-              <h1>{data?.title}</h1>
-              <div className="amount">${data?.price?.toLocaleString()}</div>
-              <p>{data?.description}</p>
-              <div className="others">
-                <b>SKU: </b>
-                {data?.title}
-                {data?.id}
-              </div>
-              <div className="others">
-                <b>Category: </b>
-                {data?.category?.name}
-              </div>
-              <br />
-              <div className="flex">
-                <InputField
-                  inputType="number"
-                  placeholder={"Qty"}
-                  onTextChange={(e) => setQuantity(e.target.value)}
+          {data && (
+            <>
+              <div className="first_row">
+                <ImageLoader
+                  src={data?.images[0]}
+                  // src={`https://picsum.photos/640/480?random=${data?.id}`}
+                  effect="blur"
+                  alt="Product"
+                  placeholderSrc={"/assets/imagePlaceholder.png"}
                 />
-                <Button text="Add to Cart" primary onClick={addToCart} />
+                <div className="details">
+                  <h1>{data?.title}</h1>
+                  <div className="amount">${data?.price?.toLocaleString()}</div>
+                  <p>{data?.description}</p>
+                  <div className="others">
+                    <b>SKU: </b>
+                    {data?.title}
+                    {data?.id}
+                  </div>
+                  <div className="others">
+                    <b>Category: </b>
+                    {data?.category?.name}
+                  </div>
+                  <br />
+                  <div className="flex">
+                    <InputField
+                      inputType="number"
+                      value={quantity}
+                      placeholder={"Qty"}
+                      onTextChange={(e) => setQuantity(e.target.value)}
+                    />
+                    <Button text="Add to Cart" primary onClick={addToCart} />
+                  </div>
+                </div>
               </div>
-            </div>
-          </div>
-          <div className="second_row">
-            <h3>Description</h3>
-            <hr />
-            <br />
-            <h2>Description</h2>
-            <p>{data?.description}</p>
-          </div>
+              <div className="second_row">
+                <h3>Description</h3>
+                <hr />
+                <br />
+                <h2>Description</h2>
+                <p>{data?.description}</p>
+              </div>
+            </>
+          )}
         </Container>
       }
     />
