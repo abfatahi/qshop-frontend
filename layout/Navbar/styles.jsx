@@ -36,8 +36,11 @@ export default styled.div`
     cursor: pointer;
     margin-right: 3rem;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 968px) {
       width: 150px;
+    }
+
+    @media screen and (max-width: 768px) {
       margin-right: 0;
     }
 
@@ -49,6 +52,10 @@ export default styled.div`
 
   .searchbar {
     margin-left: 3rem;
+
+    @media screen and (max-width: 768px) {
+      margin-right: 0;
+    }
 
     @media screen and (max-width: 768px) {
       margin-left: 5rem;
@@ -65,6 +72,11 @@ export default styled.div`
     gap: 2rem;
     row-gap: 0.25rem;
     flex-wrap: wrap;
+
+    @media screen and (max-width: 968px) {
+      gap: 1.5rem;
+      row-gap:0.5rem;
+    }
 
     @media screen and (max-width: 768px) {
       display: none;

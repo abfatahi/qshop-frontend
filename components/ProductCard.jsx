@@ -18,7 +18,7 @@ const ProductCard = (props) => {
         src={props?.images[0]}
         alt=""
         effect="blur"
-        placeholderSrc={'/assets/imagePlaceholder.png'}
+        placeholderSrc={"/assets/imagePlaceholder.png"}
       />
       <h3>{props?.title}</h3>
       <h3>${props?.price?.toLocaleString()}</h3>
@@ -40,6 +40,10 @@ const Container = styled.div`
     font-weight: 200;
     font-size: 1.2rem;
     text-transform: uppercase;
+
+    @media screen and (max-width: 968px) {
+      font-size: 1.1rem;
+    }
   }
 
   :hover {
