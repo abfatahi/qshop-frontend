@@ -8,7 +8,6 @@ import { Container } from "./index";
 
 export default function Clothes() {
   const { data, isLoading, isError } = useFetch();
-  console.log(data, isLoading, isError);
   const [all, setAll] = React.useState(1);
   return (
     <Layout
