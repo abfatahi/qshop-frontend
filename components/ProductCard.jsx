@@ -60,5 +60,6 @@ const ImageLoader = styled(LazyLoadImage)`
 
   @media screen and (max-width: 425px) {
     height: 200px;
+    min-width: 300px;
   }
 `;

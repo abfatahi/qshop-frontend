@@ -96,7 +96,9 @@ const ProductContainer = styled.div`
   }
 
   @media screen and (max-width: 425px) {
-    grid-template-columns: 1fr;
+    display: flex;
+    gap:1rem;
+    overflow: auto;
   }
 `;
 
@@ -121,8 +123,8 @@ const HeaderBar = styled.div`
     }
   }
 
-  @media screen and (max-width: 425px){
-    h2{
+  @media screen and (max-width: 425px) {
+    h2 {
       font-size: 1rem;
     }
   }

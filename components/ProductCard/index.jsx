@@ -20,7 +20,7 @@ const ProductCard = (props) => {
         placeholderSrc={"/assets/imagePlaceholder.png"}
       />
       <h3>{props?.title}</h3>
-      <h3>${props?.price?.toLocaleString()}</h3>
+      {/* <h3>${props?.price?.toLocaleString()}</h3> */}
     </Container>
   );
 };
@@ -33,6 +33,8 @@ const Container = styled.div`
   align-items: center;
   gap: 0.5rem;
   cursor: pointer;
+  width: 300px !important;
+  background: red;
 
   h3 {
     text-align: center;
