@@ -15,7 +15,7 @@ const Navbar = () => {
           <FaBell className="icon" />
         </NotificationIcon>
         <UserDetails>
-          <img src="/assets/imagePlaceholder.png" alt="Profile pics" />
+          <img src="/assets/avatar.png" alt="Profile pics" />
           <h3>Admin</h3>
         </UserDetails>
       </div>

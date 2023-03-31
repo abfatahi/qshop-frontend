@@ -52,7 +52,7 @@ export const CategoriesWrapper = styled.div`
     gap: 0.5rem;
 
     @media screen and (max-width: 425px) {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
     }
   }
 
@@ -62,5 +62,6 @@ export const CategoriesWrapper = styled.div`
     flex-direction: row;
     overflow: auto;
     gap: 2rem;
+    padding: 0.5rem 1rem;
   }
 `;

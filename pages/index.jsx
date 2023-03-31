@@ -97,7 +97,7 @@ const ProductContainer = styled.div`
 
   @media screen and (max-width: 425px) {
     display: flex;
-    gap:1rem;
+    gap: 1rem;
     overflow: auto;
   }
 `;

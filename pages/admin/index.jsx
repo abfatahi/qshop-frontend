@@ -62,10 +62,6 @@ const CardContainer = styled.div`
   @media screen and (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
-
-  @media screen and (max-width: 425px) {
-    grid-template-columns: 1fr;
-  }
 `;
 
 const Card = styled.div`
@@ -88,6 +84,20 @@ const Card = styled.div`
     font-size: 3.5rem;
     color: #fff;
   }
+
+  @media screen and (max-width: 425px) {
+    height: 100px;
+
+    p {
+      font-size: 1rem;
+      line-height: 100%;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #fff;
+    }
+  }
 `;
 
 const TableWrapper = styled.div`
@@ -105,6 +115,5 @@ const TableWrapper = styled.div`
     gap: 0.3rem;
     font-size: 1rem;
     cursor: pointer;
-
   }
 `;
