@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import React from "react";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import styled from "styled-components";
@@ -13,14 +12,13 @@ const ProductCard = (props) => {
   return (
     <Container onClick={(e) => handleClick(e, props?.id)} key={props?.id}>
       <ImageLoader
-        // src={`https://picsum.photos/640/480?random=${props?.id}`}
         src={props?.images[0]}
-        alt=""
+        alt={props?.title}
         effect="blur"
         placeholderSrc={"/assets/imagePlaceholder.png"}
       />
       <h3>{props?.title}</h3>
-      <h3>${props?.price?.toLocaleString()}</h3>
+      <h3 className="bold">$ {props?.price?.toLocaleString()}.00</h3>
     </Container>
   );
 };
@@ -36,13 +34,18 @@ const Container = styled.div`
 
   h3 {
     text-align: center;
-    font-weight: 200;
     font-size: 1.2rem;
-    text-transform: uppercase;
+    font-weight: 300;
+    line-height: 100%;
+    text-transform: capitalize;
 
     @media screen and (max-width: 968px) {
-      font-size: 1.1rem;
+      font-size: 1rem;
     }
+  }
+
+  .bold {
+    font-weight: 500;
   }
 
   :hover {
@@ -51,8 +54,11 @@ const Container = styled.div`
 `;
 
 const ImageLoader = styled(LazyLoadImage)`
-  width: 100% !important;
-  height: 300px !important;
-  object-fit: fill !important;
+  width: 100%;
+  height: 300px;
   transition: all 0.3s ease-in-out;
+
+  @media screen and (max-width: 425px) {
+    height: 200px;
+  }
 `;

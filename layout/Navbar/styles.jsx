@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 
 export default styled.div`
   background: #fff;
@@ -8,7 +9,7 @@ export default styled.div`
   align-items: center;
   justify-content: space-between;
   position: fixed;
-  top: 40px;
+  top: 0;
   left: 0;
   z-index: 99;
   width: 100%;
@@ -75,7 +76,7 @@ export default styled.div`
 
     @media screen and (max-width: 968px) {
       gap: 1.5rem;
-      row-gap:0.5rem;
+      row-gap: 0.5rem;
     }
 
     @media screen and (max-width: 768px) {
@@ -107,4 +108,10 @@ export default styled.div`
       color: #bdbdbd;
     }
   }
+`;
+
+export const NavLink = styled(Link)`
+  display: flex;
+  align-items: center;
+  background: red;
 `;

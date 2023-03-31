@@ -7,7 +7,7 @@ import Sidenav from "./Sidenav";
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { sidebarSelector, toggleSidebar } from "../redux/reducers/sidebar";
-import Banner from "../components/Banner";
+// import Banner from "../components/Banner";
 
 const Layout = (props) => {
   const dispatch = useDispatch();
@@ -21,7 +21,7 @@ const Layout = (props) => {
           handleSidebarClose={() => dispatch(toggleSidebar())}
         />
       )}
-      <Banner />
+      {/* <Banner /> */}
       <Navbar toggleSideBar={() => dispatch(toggleSidebar())} />
       <Content content={props.content} />
       <Footer />

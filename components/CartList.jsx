@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link";
 import React from "react";
 import { FaTimesCircle } from "react-icons/fa";
 import { useDispatch } from "react-redux";
@@ -10,7 +11,9 @@ const CartList = (props) => {
   return (
     <Container>
       <div className="web">
-        <div className="title">{props?.title?.substring(0, 22)}</div>
+        <Link href={`/products/${props.id}`} className="title">
+          {props?.title?.substring(0, 22)}
+        </Link>
         <img src={props?.image} alt="Product" />
         <div className="amount">${props?.price?.toLocaleString()}</div>
         <div className="title">{props?.quantity}</div>

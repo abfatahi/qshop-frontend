@@ -111,14 +111,13 @@ export default function SingleProduct() {
               <div className="first_row">
                 <ImageLoader
                   src={data?.images[0]}
-                  // src={`https://picsum.photos/640/480?random=${data?.id}`}
                   effect="blur"
                   alt="Product"
                   placeholderSrc={"/assets/imagePlaceholder.png"}
                 />
                 <div className="details">
                   <h1>{data?.title}</h1>
-                  <div className="amount">${data?.price?.toLocaleString()}</div>
+                  <div className="amount">$ {data?.price?.toLocaleString()}.00</div>
                   <p>{data?.description}</p>
                   <div className="others">
                     <b>SKU: </b>

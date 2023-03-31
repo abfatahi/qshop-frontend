@@ -5,7 +5,6 @@ import Layout from "../layout";
 import { AppRoutes } from "../utils/constants";
 // import styled from "styled-components";
 
-
 export default function About() {
   return (
     <Layout
@@ -14,50 +13,88 @@ export default function About() {
         <Container>
           <div className="left_frame">
             <h1>BLOG</h1>
-            {Array.from({ length: 4 }, (index) => {
-              return (
-                <BlogPost>
-                  <img src="/assets/about-img.jpeg" alt="" />
-                  <h4>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit
-                  </h4>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-                    gravida, massa a vestibulum varius, ex mi finibus dui, at
-                    pellentesque nulla lorem a sapien. Suspendisse et justo
-                    tortor. Praesent ac bibendum quam, ac blandit tortor. Sed id
-                    diam ac odio dignissim fringilla. Nunc nec pellentesque
-                    augue. Aenean vel diam pharetra
-                  </p>
-                  <Link href={AppRoutes.blog}>
-                    <button>READ MORE</button>
-                  </Link>
-                </BlogPost>
-              );
-            })}
+            <BlogPost>
+              <img src="/assets/helpcenter.jpeg" alt="" />
+              <h4>How do I place an order on Shopper?</h4>
+              <p>
+                To place an order on Shopper: 
+                <br/>&#x2022; Enter the name of the item you’d like to buy in the search bar. You can also browse for products
+                by selecting the category on the left side of your screen <br/>
+                &#x2022; Click on a product to learn more about it or add to your cart <br/>&#x2022;
+                Click add to cart and proceed to the checkout page 
+                <br/>&#x2022; Register or login
+                into your existing account by entering your email and password
+                <br/>&#x2022; Enter your shipping/billing information ensuring your address is
+                complete and accurate <br/>&#x2022; Select a Delivery Method Choose your
+                preferred Payment Method <br/>&#x2022; Click on Confirm Order to complete your
+                order. <br/>&#x2022; For additional support contact us at +1207006000XXXX. Our
+                hours of operations are 8am - 8pm on Mondays to Sundays.
+              </p>
+              <Link href={AppRoutes.blog}>
+                <button>LEARN MORE</button>
+              </Link>
+            </BlogPost>
+            <BlogPost>
+              <h4>
+                I am having trouble adding products to my cart. What do I do?
+              </h4>
+              <p>
+                If you are having trouble adding products to your cart please
+                make sure that you have made all relevant size and color
+                selections. If you still have problems this may mean that the
+                item you are trying to buy is sold out. For additional support
+                contact us at +1207006000XXXX. Our hours of operations are 8am -
+                8pm on Mondays to Sundays.
+              </p>
+              <Link href={AppRoutes.blog}>
+                <button>LEARN MORE</button>
+              </Link>
+            </BlogPost>
+            <BlogPost>
+              <h4>How do I track my order?</h4>
+              <p>
+                To track the status of your order: Log into your Shopper account
+                Select ‘Account’ in the upper right hand menu Select ‘Orders’
+                Find the item you would like to track and click ‘see details’
+                Select the “track item” to display delivery details You also
+                receive delivery updates via email Account mailbox and App
+                notifications to make it easy to know when your order will be
+                delivered. For additional support please contact us here
+              </p>
+              <Link href={AppRoutes.blog}>
+                <button>LEARN MORE</button>
+              </Link>
+            </BlogPost>
+            <BlogPost>
+              <h4>
+                I am unhappy with the service from the delivery associate. How
+                can I share my feedback?
+              </h4>
+              <p>
+                We take customer satisfaction seriously. If you’re unhappy with
+                the service provided by our delivery agent please contact us
+                here to report the incident so we can take the necessary
+                corrective actions
+              </p>
+              <Link href={AppRoutes.blog}>
+                <button>LEARN MORE</button>
+              </Link>
+            </BlogPost>
           </div>
           <div className="right_frame">
             <br />
             <b>Recent Post</b>
             <Link href={AppRoutes.blog}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-              gravida, massa a vestibulum varius
+              How do I place an order on Shopper?
             </Link>
             <Link href={AppRoutes.blog}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-              gravida, massa a vestibulum varius,
+              I am having trouble adding products to my cart. What do I do?
             </Link>
+            <Link href={AppRoutes.blog}>How do I track my order?</Link>
+            <Link href={AppRoutes.blog}>How much are delivery fees?</Link>
             <Link href={AppRoutes.blog}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-              gravida, massa a vestibulum varius,
-            </Link>
-            <Link href={AppRoutes.blog}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-              gravida, massa a vestibulum varius,
-            </Link>
-            <Link href={AppRoutes.blog}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-              gravida, massa a vestibulum varius,
+              I am unhappy with the service from the delivery associate. How can
+              I share my feedback?
             </Link>
           </div>
         </Container>

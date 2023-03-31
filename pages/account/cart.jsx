@@ -74,26 +74,18 @@ export default function Cart() {
           </div>
           <div className="right_frame">
             <br />
-            <b>Recent Post</b>
+            <b>Recent Post (FAQS)</b>
             <Link href={AppRoutes.blog}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-              gravida, massa a vestibulum varius
+              How do I place an order on Shopper?
             </Link>
             <Link href={AppRoutes.blog}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-              gravida, massa a vestibulum varius,
+              I am having trouble adding products to my cart. What do I do?
             </Link>
+            <Link href={AppRoutes.blog}>How do I track my order?</Link>
+            <Link href={AppRoutes.blog}>How much are delivery fees?</Link>
             <Link href={AppRoutes.blog}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-              gravida, massa a vestibulum varius,
-            </Link>
-            <Link href={AppRoutes.blog}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-              gravida, massa a vestibulum varius,
-            </Link>
-            <Link href={AppRoutes.blog}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut
-              gravida, massa a vestibulum varius,
+              I am unhappy with the service from the delivery associate. How can
+              I share my feedback?
             </Link>
           </div>
         </Container>

@@ -11,7 +11,7 @@ const Footer = () => {
         <FaInstagram className="icon" />
         <FaLinkedin className="icon" />
       </div>
-      SHOPPER © 2022 All Rights Reserved.
+      SHOPPER © 2023 All Rights Reserved.
     </Container>
   );
 };

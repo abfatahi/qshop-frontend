@@ -42,7 +42,6 @@ const Button = ({
       onClick={onClick}
       disabled={disabled ? disabled : loading ? true : false}
     >
-      {icon && icon}
       {loading ? (
         <Spin indicator={antIcon} />
       ) : text.length > 25 ? (
@@ -50,6 +49,7 @@ const Button = ({
       ) : (
         text
       )}
+      {icon && icon}
     </Container>
   );
 };
@@ -77,7 +77,12 @@ const Container = styled.button`
   ${(props) => css`
     ${props.primary &&
     css`
-      background: linear-gradient(90deg, #000000 0%, #000009 47%, #0000009a 100%);
+      background: linear-gradient(
+        90deg,
+        #000000 0%,
+        #000009 47%,
+        #0000009a 100%
+      );
       box-shadow: 3.994px 22.651px 57px rgba(97, 73, 205, 0.259);
     `}
     ${props.light &&
