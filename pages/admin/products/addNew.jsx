@@ -54,10 +54,9 @@ const AddNewProduct = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setSubmmited(true);
-    console.log(body);
-    // if (title && description && price && image && quantity && category) {
-    //   createProduct(body);
-    // }
+    if (title && description && price && image && quantity && category) {
+      createProduct(body);
+    }
   };
 
   const delay = async () => {
