@@ -31,7 +31,7 @@ export const columns = [
     dataIndex: "category",
     key: "category",
     width: 100,
-    render: (text) => <Space>{text.name}</Space>,
+    render: (text) => <Space>{text}</Space>,
   },
   {
     title: "Description",
@@ -56,7 +56,7 @@ export const columns = [
     title: "Quantity",
     dataIndex: "quantity",
     key: "quantity",
-    render: () => <Space>100</Space>,
+    render: (text) => <Space>{text}</Space>,
   },
   {
     title: "View",
@@ -64,7 +64,7 @@ export const columns = [
       <Link href={`/admin/products/${record.id}`}>
         <FaEllipsisH
           style={{ cursor: "pointer" }}
-          onClick={() => sessionStorage.setItem("tab", "Products")}
+          onClick={() => sessionStorage.setItem("productId", record?.id)}
         />
       </Link>
     ),

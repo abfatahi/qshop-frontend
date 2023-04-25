@@ -1,6 +1,6 @@
-import { useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { QUERY_KEY } from "../services/constants";
+import { QUERY_KEY, baseURL } from "../services/constants";
 
 const useGetTopProductsQuery = () => {
   return useQuery(
@@ -15,4 +15,20 @@ const useGetTopProductsQuery = () => {
   );
 };
 
-export { useGetTopProductsQuery };
+const useUploadProductImage = () => {
+  const mutation = useMutation((requestData) =>
+    axios.post(`${baseURL}/ecommerce/product/upload-image`, requestData)
+  );
+
+  return mutation;
+};
+
+const useCreateProduct = () => {
+  const mutation = useMutation((requestData) =>
+    axios.post(`${baseURL}/ecommerce/product/single`, requestData)
+  );
+
+  return mutation;
+};
+
+export { useGetTopProductsQuery, useUploadProductImage, useCreateProduct };

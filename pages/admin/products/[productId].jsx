@@ -4,8 +4,26 @@ import React from "react";
 import styled from "styled-components";
 import DashboardLayout from "../../../layout/DashboardLayout";
 import { Button, InputField, TextArea } from "../../../reusables";
+import useSWR from "swr";
+import { baseURL } from "../../../services/constants";
+
 
 const ProductDetails = () => {
+  const productId = sessionStorage.getItem("productId");
+const useFetch = () => {
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const { data, error } = useSWR(
+    `${baseURL}/ecommerce/product/single?id=${productId}`,
+    fetcher
+  );
+  return {
+    data,
+    isLoading: !error && !data,
+    isError: error,
+  };
+};
+  const { data, isLoading, isError } = useFetch();
+
   return (
     <DashboardLayout>
       <Container>
@@ -16,39 +34,36 @@ const ProductDetails = () => {
         </p>
         <hr />
         <div className="details_group">
-          <img
-            src="https://picsum.photos/640/480?random=3"
-            alt="Nike Airforce 1"
-          />
+          <img src={data?.image} alt={data?.title} />
           <div className="details">
             <div className="name">
               <p>NAME:</p>
               <h1>
-                <b>Nike Airforce 1 Sneakers</b>
+                <b>{data?.title}</b>
               </h1>
             </div>
             <div className="price">
               <p>PRICE:</p>
-              <h1>$500.00</h1>
+              <h1>${data?.price}</h1>
             </div>
             <div className="flex_group">
               <div className="category">
                 <p>CATEGORY:</p>
-                <h3>Shoes</h3>
+                <h3>{data?.category}</h3>
               </div>
               <div className="category">
                 <p>PRODUCT ID:</p>
-                <h3>5</h3>
+                <h3>{data?.id}</h3>
               </div>
             </div>
             <div className="flex_group">
               <div className="category">
                 <p>QUANTITY:</p>
-                <h3>100</h3>
+                <h3>{data?.quantity}</h3>
               </div>
               <div className="category">
                 <p>PRODUCT LINK:</p>
-                <a href="http://localhost:3000/products/5">
+                <a href={`/products/${data?.id}`}>
                   Click here to view product
                 </a>
               </div>

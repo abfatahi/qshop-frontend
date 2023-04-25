@@ -55,6 +55,7 @@ const Index = ({
   value,
   readOnly,
   full,
+  accept,
 }) => {
   const [togglePassword, setTogglePassword] = useState(false);
   return (
@@ -88,6 +89,7 @@ const Index = ({
             onKeyPress={onKeyPress}
             value={value}
             readOnly={readOnly}
+            accept={accept}
           />
         )}
       </div>

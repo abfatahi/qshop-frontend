@@ -4,17 +4,19 @@ import React from "react";
 import { FaArrowRight } from "react-icons/fa";
 import styled from "styled-components";
 import DashboardLayout from "../../layout/DashboardLayout";
-import { products } from "../../reusables/products";
 import { columns } from "../../reusables/table";
+import { baseURL } from "../../services/constants";
+import useSWR from "swr";
 
 const Admin = () => {
+  const { data, isLoading, isError } = useFetch();
   return (
     <DashboardLayout>
       <h1>Overview</h1>
       <CardContainer>
         <Card>
           <p>Total Products</p>
-          <h1>{products.length}</h1>
+          <h1>{data?.length}</h1>
         </Card>
         <Card>
           <p>Total Users</p>
@@ -41,13 +43,26 @@ const Admin = () => {
         </div>
         <Table
           columns={columns}
-          dataSource={products.slice(0, 5)}
+          dataSource={data?.slice(0, 5)}
           pagination={false}
           scroll={{ x: "max-content" }}
         />
       </TableWrapper>
     </DashboardLayout>
   );
+};
+
+const useFetch = () => {
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const { data, error } = useSWR(
+    `${baseURL}/ecommerce/product/all-products`,
+    fetcher
+  );
+  return {
+    data,
+    isLoading: !error && !data,
+    isError: error,
+  };
 };
 
 export default Admin;

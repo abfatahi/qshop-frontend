@@ -1,16 +1,16 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Selectfield = (props) => {
   return (
     <Container full={props.full ? props.full : undefined}>
-      <div className='group'>
+      <div className="group">
         <select onChange={props.onValueChange} name={props.name} id={props.id}>
           <option>{props.placeholder}</option>
           {props.data.map((item, index) => {
             return (
-              <option key={index} value={item.value || item.uid || item.id}>
-                {item.name || item.title}
+              <option key={index} value={item?.value}>
+                {item.label}
               </option>
             );
           })}
@@ -24,7 +24,7 @@ export default Selectfield;
 
 const Container = styled.div`
   position: relative;
-  width: ${({ full }) => (full ? '100%' : '50%')};
+  width: ${({ full }) => (full ? "100%" : "50%")};
 
   .group {
     display: flex;
@@ -70,7 +70,7 @@ const Container = styled.div`
   }
 
   .group::after {
-    content: '▼';
+    content: "▼";
     font-size: 1rem;
     right: 15px;
     position: absolute;

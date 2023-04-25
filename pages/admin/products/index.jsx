@@ -6,8 +6,11 @@ import DashboardLayout from "../../../layout/DashboardLayout";
 import styled from "styled-components";
 import { Button } from "../../../reusables";
 import Link from "next/link";
+import useSWR from "swr";
+import { baseURL } from "../../../services/constants";
 
 const Products = () => {
+  const { data, isLoading, isError } = useFetch();
   return (
     <DashboardLayout>
       <HeaderWrapper>
@@ -19,11 +22,24 @@ const Products = () => {
       <br />
       <Table
         columns={columns}
-        dataSource={products}
+        dataSource={data}
         scroll={{ x: "max-content" }}
       />
     </DashboardLayout>
   );
+};
+
+const useFetch = () => {
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const { data, error } = useSWR(
+    `${baseURL}/ecommerce/product/all-products`,
+    fetcher
+  );
+  return {
+    data,
+    isLoading: !error && !data,
+    isError: error,
+  };
 };
 
 export default Products;
