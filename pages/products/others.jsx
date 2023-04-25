@@ -17,6 +17,7 @@ export default function Others() {
         <>
           <h1>OTHERS</h1>
           {data && <p>Showing all {data?.length} results</p>}
+          <br />
           <Container>
             {isLoading &&
               Array.from({ length: 8 }, (index) => {

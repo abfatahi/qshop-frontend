@@ -6,22 +6,29 @@ import DashboardLayout from "../../../layout/DashboardLayout";
 import { Button, InputField, TextArea } from "../../../reusables";
 import useSWR from "swr";
 import { baseURL } from "../../../services/constants";
-
+import { adminSelector } from "../../../redux/reducers/admin";
+import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 
 const ProductDetails = () => {
+  const { isAuthenticated } = useSelector(adminSelector);
+  const Navigate = useRouter();
+  if (!isAuthenticated) {
+    Navigate.push("/login");
+  }
   const productId = sessionStorage.getItem("productId");
-const useFetch = () => {
-  const fetcher = (...args) => fetch(...args).then((res) => res.json());
-  const { data, error } = useSWR(
-    `${baseURL}/ecommerce/product/single?id=${productId}`,
-    fetcher
-  );
-  return {
-    data,
-    isLoading: !error && !data,
-    isError: error,
+  const useFetch = () => {
+    const fetcher = (...args) => fetch(...args).then((res) => res.json());
+    const { data, error } = useSWR(
+      `${baseURL}/ecommerce/product/single?id=${productId}`,
+      fetcher
+    );
+    return {
+      data,
+      isLoading: !error && !data,
+      isError: error,
+    };
   };
-};
   const { data, isLoading, isError } = useFetch();
 
   return (
@@ -63,9 +70,7 @@ const useFetch = () => {
               </div>
               <div className="category">
                 <p>PRODUCT LINK:</p>
-                <a href={`/products/${data?.id}`}>
-                  Click here to view product
-                </a>
+                <a href={`/products/${data?.id}`}>Click here to view product</a>
               </div>
             </div>
           </div>

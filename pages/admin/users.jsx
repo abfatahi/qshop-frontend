@@ -3,8 +3,16 @@ import Link from "next/link";
 import React from "react";
 import { FaEllipsisH } from "react-icons/fa";
 import DashboardLayout from "../../layout/DashboardLayout";
+import { useSelector } from "react-redux";
+import { adminSelector } from "../../redux/reducers/admin";
+import { useRouter } from "next/router";
 
 const Users = () => {
+  const { isAuthenticated } = useSelector(adminSelector);
+  const Navigate = useRouter();
+  if (!isAuthenticated) {
+    Navigate.push("/login");
+  }
   return (
     <DashboardLayout>
       <h1>Users</h1>

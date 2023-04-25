@@ -8,9 +8,17 @@ import { Button } from "../../../reusables";
 import Link from "next/link";
 import useSWR from "swr";
 import { baseURL } from "../../../services/constants";
+import { useSelector } from "react-redux";
+import { adminSelector } from "../../../redux/reducers/admin";
+import { useRouter } from "next/router";
 
 const Products = () => {
   const { data, isLoading, isError } = useFetch();
+  const { isAuthenticated } = useSelector(adminSelector);
+  const Navigate = useRouter();
+  if (!isAuthenticated) {
+    Navigate.push("/login");
+  }
   return (
     <DashboardLayout>
       <HeaderWrapper>

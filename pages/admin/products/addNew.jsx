@@ -8,6 +8,9 @@ import {
   useUploadProductImage,
 } from "../../../hooks/products";
 import { toast } from "react-toastify";
+import { useSelector } from "react-redux";
+import { adminSelector } from "../../../redux/reducers/admin";
+import { useRouter } from "next/router";
 
 const AddNewProduct = () => {
   const [body, setBody] = useState({
@@ -70,7 +73,11 @@ const AddNewProduct = () => {
     delay();
     window.location.reload();
   }
-
+  const { isAuthenticated } = useSelector(adminSelector);
+  const Navigate = useRouter();
+  if (!isAuthenticated) {
+    Navigate.push("/login");
+  }
   return (
     <DashboardLayout>
       <h1>Add New Products</h1> <br />

@@ -17,6 +17,7 @@ export default function AllProducts() {
         <>
           <h1>ALL PRODUCTS</h1>
           {data && <p>Showing all {data?.length} results</p>}
+          <br />
           <Container>
             {isLoading &&
               Array.from({ length: 8 }, (index) => {

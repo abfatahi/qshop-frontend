@@ -24,11 +24,11 @@ const Admin = () => {
         </Card>
         <Card>
           <p>Total Revenue</p>
-          <h1>$ 100</h1>
+          <h1>$0.00</h1>
         </Card>
         <Card>
           <p>Total Carts</p>
-          <h1>1</h1>
+          <h1>0</h1>
         </Card>
       </CardContainer>
       <br />
