@@ -5,6 +5,7 @@ import ProductCard from "../../components/ProductCard";
 import ProductCardSkeleton from "../../components/ProductCardSkeleton";
 import { Pagination } from "antd";
 import useSWR from "swr";
+import { baseURL } from "../../services/constants";
 
 export default function Shoes() {
   const { data, isLoading, isError } = useFetch();
@@ -54,7 +55,7 @@ export default function Shoes() {
 const useFetch = () => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error } = useSWR(
-    `https://api.escuelajs.co/api/v1/categories/4/products`,
+    `${baseURL}/ecommerce/product/all?category=Shoe`,
     fetcher
   );
   return {

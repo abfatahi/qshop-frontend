@@ -54,7 +54,7 @@ export default function Others() {
 const useFetch = () => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error } = useSWR(
-    `https://api.escuelajs.co/api/v1/categories/5/products`,
+    `${baseURL}/ecommerce/product/all?category=Others`,
     fetcher
   );
   return {

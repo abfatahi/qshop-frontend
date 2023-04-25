@@ -12,7 +12,7 @@ const ProductCard = (props) => {
   return (
     <Container onClick={(e) => handleClick(e, props?.id)} key={props?.id}>
       <ImageLoader
-        src={props?.images[0]}
+        src={props?.image}
         alt={props?.title}
         effect="blur"
         placeholderSrc={"/assets/imagePlaceholder.png"}

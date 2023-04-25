@@ -5,6 +5,7 @@ import ProductCardSkeleton from "../../components/ProductCardSkeleton";
 import { Pagination } from "antd";
 import useSWR from "swr";
 import { Container } from "./index";
+import { baseURL } from "../../services/constants";
 
 export default function Clothes() {
   const { data, isLoading, isError } = useFetch();
@@ -16,6 +17,7 @@ export default function Clothes() {
         <>
           <h1>CLOTHES</h1>
           {data && <p>Showing all {data?.length} results</p>}
+          <br />
           <Container>
             {isLoading &&
               Array.from({ length: 8 }, (index) => {
@@ -54,7 +56,7 @@ export default function Clothes() {
 const useFetch = () => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error } = useSWR(
-    `https://api.escuelajs.co/api/v1/categories/1/products`,
+    `${baseURL}/ecommerce/product/all?category=Cloth`,
     fetcher
   );
   return {

@@ -10,9 +10,11 @@ import { Button } from "../reusables";
 import { FaArrowRight } from "react-icons/fa";
 import Link from "next/link";
 import { AppRoutes } from "../utils/constants";
+import { baseURL } from "../services/constants";
 
 export default function Home() {
-  const { data, isLoading, isError } = useFetch();
+  const { data, isLoading, isError } = useFetchTopProducts();
+  const {recommendedProducts} = useFetchRecommendedProducts()
   const [all, setAll] = React.useState(1);
   return (
     <Layout
@@ -57,7 +59,7 @@ export default function Home() {
                   </Link>
                 </HeaderBar>
                 <ProductContainer>
-                  {data
+                  {recommendedProducts
                     ?.slice((all - 1) * 4, (all - 1) * 4 + 4)
                     .map((product, index) => {
                       return <ProductCard key={index} {...product} />;
@@ -72,10 +74,10 @@ export default function Home() {
   );
 }
 
-const useFetch = () => {
+const useFetchTopProducts = () => {
   const fetcher = (...args) => fetch(...args).then((res) => res.json());
   const { data, error } = useSWR(
-    `https://api.escuelajs.co/api/v1/products`,
+    `${baseURL}/ecommerce/product/popular`,
     fetcher
   );
   return {
@@ -84,6 +86,18 @@ const useFetch = () => {
     isError: error,
   };
 };
+
+const useFetchRecommendedProducts = () => {
+  const fetcher = (...args) => fetch(...args).then((res) => res.json());
+  const { data, error } = useSWR(
+    `${baseURL}/ecommerce/product/recommended`,
+    fetcher
+  );
+  return {
+    recommendedProducts: data,
+  };
+};
+
 const Container = styled.div``;
 
 const ProductContainer = styled.div`

@@ -18,7 +18,7 @@ export const columns = [
     render: (text, record) => (
       <Space>
         <img
-          src={record.images[0]}
+          src={record.image}
           alt={text}
           style={{ width: "60px", height: "35px" }}
         />
