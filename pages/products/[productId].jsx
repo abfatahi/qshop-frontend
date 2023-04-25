@@ -13,16 +13,18 @@ import {
   handleAddToCart,
 } from "../../redux/reducers/cart";
 import { toast } from "react-toastify";
+import { baseURL } from "../../services/constants";
 
 export default function SingleProduct() {
   const { success, duplicate } = useSelector(cartSelector);
   const dispatch = useDispatch();
   const router = useRouter();
   const { productId } = router.query;
+
   const useFetch = () => {
     const fetcher = (...args) => fetch(...args).then((res) => res.json());
     const { data, error } = useSWR(
-      `https://api.escuelajs.co/api/v1/products/${productId}`,
+      `${baseURL}/ecommerce/product/single?id=${productId}`,
       fetcher
     );
     return {
@@ -31,17 +33,18 @@ export default function SingleProduct() {
       isError: error,
     };
   };
+
   const { data, isLoading, isError } = useFetch();
   const [quantity, setQuantity] = React.useState(1);
 
   const addToCart = async () => {
-    const { id, title, price, images } = data;
+    const { id, title, price, image } = data;
     dispatch(
       handleAddToCart({
         id,
         title,
         price,
-        image: images[0],
+        image,
         quantity,
         subTotal: parseFloat(price) * parseFloat(quantity),
       })
@@ -110,7 +113,7 @@ export default function SingleProduct() {
             <>
               <div className="first_row">
                 <ImageLoader
-                  src={data?.images[0]}
+                  src={data?.image}
                   effect="blur"
                   alt="Product"
                   placeholderSrc={"/assets/imagePlaceholder.png"}
@@ -126,7 +129,7 @@ export default function SingleProduct() {
                   </div>
                   <div className="others">
                     <b>Category: </b>
-                    {data?.category?.name}
+                    {data?.category}
                   </div>
                   <br />
                   <div className="flex">

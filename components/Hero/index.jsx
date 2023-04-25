@@ -16,7 +16,7 @@ const Hero = () => {
   return (
     <Container>
       <CategoriesWrapper>
-        <Link href="/products/shoes">
+        <Link href="/products">
           <span>
             <FaApple />
             Supermarket
@@ -28,37 +28,25 @@ const Hero = () => {
             Shoes
           </span>
         </Link>
-        <Link href="/products/shoes">
+        <Link href="/products/clothes">
           <span>
             <GiClothes />
             Clothes
           </span>
         </Link>
-        <Link href="/products/shoes">
+        <Link href="/products/furniture">
           <span>
             <GiWoodenChair />
             Furniture
           </span>
         </Link>
-        <Link href="/products/shoes">
-          <span>
-            <GiLaptop />
-            Computers
-          </span>
-        </Link>
-        <Link href="/products/shoes">
-          <span>
-            <GiTablet />
-            Phones&nbsp;&&nbsp;Tablets
-          </span>
-        </Link>
-        <Link href="/products/shoes">
+        <Link href="/products/electronics">
           <span>
             <GiPocketRadio />
             Electronics
           </span>
         </Link>
-        <Link href="/products/shoes">
+        <Link href="/products/others">
           <span>
             <GiGamepad />
             Other&nbsp;categories

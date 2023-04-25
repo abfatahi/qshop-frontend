@@ -5,6 +5,7 @@ import ProductCardSkeleton from "../../components/ProductCardSkeleton";
 import { Pagination } from "antd";
 import useSWR from "swr";
 import { Container } from "./index";
+import { baseURL } from "../../services/constants";
 
 export default function Others() {
   const { data, isLoading, isError } = useFetch();
